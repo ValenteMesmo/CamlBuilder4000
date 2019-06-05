@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CamlBuilder4000", "CamlBuilder4000.csproj", "{342FA430-0220-4BB9-8607-B2B05525F1EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTests", "UnitTests\UnitTests.csproj", "{7BC0A5EB-4867-47F9-8216-078BAE2A3997}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{342FA430-0220-4BB9-8607-B2B05525F1EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342FA430-0220-4BB9-8607-B2B05525F1EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342FA430-0220-4BB9-8607-B2B05525F1EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342FA430-0220-4BB9-8607-B2B05525F1EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {27D4F975-2628-4DC4-9C03-1B1EDDC663F4}
+	EndGlobalSection
+EndGlobal
