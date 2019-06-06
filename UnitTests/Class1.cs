@@ -120,7 +120,7 @@ namespace UnitTests
                     .Or()
                     .Text("Status").Equal("5")
                     .Or()
-                    .Text("Status").Equal("6"))
+                    .Text("Status").Equal("6"))                    
                 .ToString();
 
             Assert.Equal(expected, actual);
