@@ -24,7 +24,7 @@ namespace UnitTests
                 "</Where>";
 
             var actual = CamlBuilder.Start()
-                .TextEqual("a", "1")
+                .Text("a").Equal("1")
                 .ToString();
 
             Assert.Equal(expected, actual);
@@ -47,9 +47,11 @@ namespace UnitTests
                 "</Where>";
 
             var actual = CamlBuilder.Start()
-                .TextEqual("a", "1")
+                .Text("a")
+                .Equal("1")
                 .And()
-                .TextEqual("b", "2")
+                .Text("b")
+                .Equal("2")
                 .ToString();
 
             Assert.Equal(expected, actual);
@@ -106,19 +108,19 @@ namespace UnitTests
             + "</Where>";
 
             var actual = CamlBuilder.Start()
-                .LookupIdIn("Area", 1, 2, 3)
+                .LookupId("Area").In(1, 2, 3)
                 .And(q => q
-                    .TextEqual("Status", "1")
+                    .Text("Status").Equal("1")
                     .Or()
-                    .TextEqual("Status", "2")
+                    .Text("Status").Equal("2")
                     .Or()
-                    .TextEqual("Status", "3")
+                    .Text("Status").Equal("3")
                     .Or()
-                    .TextEqual("Status", "4")
+                    .Text("Status").Equal("4")
                     .Or()
-                    .TextEqual("Status", "5")
+                    .Text("Status").Equal("5")
                     .Or()
-                    .TextEqual("Status", "6"))
+                    .Text("Status").Equal("6"))
                 .ToString();
 
             Assert.Equal(expected, actual);
@@ -147,11 +149,11 @@ namespace UnitTests
                 "</Where>";
 
             var actual = CamlBuilder.Start()
-                .TextEqual("a", "1")
+                .Text("a").Equal("1")
                 .And()
-                .TextEqual("b", "2")
+                .Text("b").Equal("2")
                 .And()
-                .TextEqual("c", "3")
+                .Text("c").Equal("3")
                 .ToString();
 
             Assert.Equal(expected, actual);
@@ -180,11 +182,11 @@ namespace UnitTests
                 "</Where>";
 
             var actual = CamlBuilder.Start()
-                .TextEqual("a", "1")
+                .Text("a").Equal("1")
                 .Or()
-                .TextEqual("b", "2")
+                .Text("b").Equal("2")
                 .Or()
-                .TextEqual("c", "3")
+                .Text("c").Equal("3")
                 .ToString();
 
             Assert.Equal(expected, actual);
@@ -213,11 +215,11 @@ namespace UnitTests
                 "</Where>";
 
             var actual = CamlBuilder.Start()
-                .TextEqual("a", "1")
+                .Text("a").Equal("1")
                 .Or()
-                .TextEqual("b", "2")
+                .Text("b").Equal("2")
                 .And()
-                .TextEqual("c", "3")
+                .Text("c").Equal("3")
                 .ToString();
 
             Assert.Equal(expected, actual);
@@ -252,13 +254,13 @@ namespace UnitTests
                 "</Where>";
 
             var actual = CamlBuilder.Start()
-                .TextEqual("a", "1")
+                .Text("a").Equal("1")
                 .And()
-                .TextEqual("b", "2")
+                .Text("b").Equal("2")
                 .And(f =>
-                    f.TextEqual("c", "3")
+                    f.Text("c").Equal("3")
                     .Or()
-                    .TextEqual("d", "4"))
+                    .Text("d").Equal("4"))
                 .ToString();
 
             Assert.Equal(expected, actual);
