@@ -102,12 +102,32 @@ namespace CamlBuilder4000
                 query.currentCondition = newCondition;
             else
             {
-                if (or)
-                    query.query += $@"<Or>{query.currentCondition}{newCondition}</Or>";
-                else
-                    query.query += $@"<And>{query.currentCondition}{newCondition}</And>";
+                var currentQuery = query.query;
+                if (currentQuery != "")
+                {
+                    if (query.currentCondition != null)
+                    {
+                        if (query.currentConditionIsOr)
+                            currentQuery = $@"<Or>{currentQuery}{query.currentCondition}</Or>";
+                        else
+                            currentQuery = $@"<And>{currentQuery}{query.currentCondition}</And>";
 
-                query.currentCondition = null;
+                        query.currentCondition = null;
+                    }
+                }
+                else {
+                    if (query.currentCondition != null)
+                    {
+                            currentQuery = query.currentCondition;
+
+                        query.currentCondition = null;
+                    }
+                }
+                
+                if (or)
+                    query.query = $@"<Or>{currentQuery}{newCondition}</Or>";
+                else
+                    query.query = $@"<And>{currentQuery}{newCondition}</And>";
             }
         }
 

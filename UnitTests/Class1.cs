@@ -56,6 +56,75 @@ namespace UnitTests
         }
 
         [Fact]
+        public void ComplexOne()
+        {
+            var expected = "<Where>"
+               + "<And>"
+                  + "<In>"
+                    + "<FieldRef Name=\"Area\" LookupId=\"TRUE\" />"
+                     + "<Values>"
+                       + "<Value Type=\"Lookup\">1</Value>"
+                        + "<Value Type=\"Lookup\">2</Value>"
+                        + "<Value Type=\"Lookup\">3</Value>"
+                     + "</Values>"
+                  + "</In>"
+                 + "<Or>"
+                     + "<Or>"
+                        + "<Or>"
+                          + "<Or>"
+                              + "<Or>"
+                                 + "<Eq>"
+                                   + "<FieldRef Name=\"Status\" />"
+                                    + "<Value Type=\"Text\">1</Value>"
+                                 + "</Eq>"
+                                 + "<Eq>"
+                                    + "<FieldRef Name=\"Status\" />"
+                                    + "<Value Type=\"Text\">2</Value>"
+                                 + "</Eq>"
+                              + "</Or>"
+                              + "<Eq>"
+                                 + "<FieldRef Name=\"Status\" />"
+                                 + "<Value Type=\"Text\">3</Value>"
+                              + "</Eq>"
+                           + "</Or>"
+                           + "<Eq>"
+                              + "<FieldRef Name=\"Status\" />"
+                              + "<Value Type=\"Text\">4</Value>"
+                           + "</Eq>"
+                        + "</Or>"
+                        + "<Eq>"
+                           + "<FieldRef Name=\"Status\" />"
+                           + "<Value Type=\"Text\">5</Value>"
+                        + "</Eq>"
+                     + "</Or>"
+                     + "<Eq>"
+                        + "<FieldRef Name=\"Status\" />"
+                        + "<Value Type=\"Text\">6</Value>"
+                     + "</Eq>"
+                  + "</Or>"
+               + "</And>"
+            + "</Where>";
+
+            var actual = CamlBuilder.Start()
+                .LookupIdIn("Area", 1, 2, 3)
+                .And(q => q
+                    .TextEqual("Status", "1")
+                    .Or()
+                    .TextEqual("Status", "2")
+                    .Or()
+                    .TextEqual("Status", "3")
+                    .Or()
+                    .TextEqual("Status", "4")
+                    .Or()
+                    .TextEqual("Status", "5")
+                    .Or()
+                    .TextEqual("Status", "6"))
+                .ToString();
+
+            Assert.Equal(expected, actual);
+        }
+
+        [Fact]
         public void ThreeConditions()
         {
             var expected = "<Where>" +
@@ -186,7 +255,7 @@ namespace UnitTests
                 .TextEqual("a", "1")
                 .And()
                 .TextEqual("b", "2")
-                .And(f => 
+                .And(f =>
                     f.TextEqual("c", "3")
                     .Or()
                     .TextEqual("d", "4"))
