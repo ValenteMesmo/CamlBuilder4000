@@ -13,6 +13,9 @@ namespace CamlBuilder4000.Internal
             this.or = or;
         }
 
+        /// <summary>
+        /// Returns the caml XML as string
+        /// </summary>
         public override string ToString() => query.ToString();
 
         public CamlTextField Text(string fieldName) =>

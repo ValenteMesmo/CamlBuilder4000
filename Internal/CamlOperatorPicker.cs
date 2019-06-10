@@ -31,10 +31,22 @@ namespace CamlBuilder4000.Internal
             currentConditionIsOr = false;
             var tempQuery = new CamlOperatorPicker(false);
             internalConditions(new CamlFieldPicker(tempQuery, false));
-            Helper.NewMethod(false, this, tempQuery);
+            Helper.CombineTwoQueries(false, this, tempQuery);
             return new CamlFieldPicker(this, false);
         }
 
+        public CamlFieldPicker Or(Action<CamlFieldPicker> internalConditions)
+        {
+            currentConditionIsOr = false;
+            var tempQuery = new CamlOperatorPicker(false);
+            internalConditions(new CamlFieldPicker(tempQuery, true));
+            Helper.CombineTwoQueries(true, this, tempQuery);
+            return new CamlFieldPicker(this, true);
+        }
+
+        /// <summary>
+        /// Returns the caml XML as string
+        /// </summary>
         public override string ToString()
         {
             if (Root)

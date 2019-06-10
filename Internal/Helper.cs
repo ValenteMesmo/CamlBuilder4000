@@ -2,9 +2,9 @@
 {
     internal static class Helper
     {
-        internal static void NewMethod(bool or, CamlOperatorPicker query, CamlOperatorPicker query2)
+        internal static void CombineTwoQueries(bool or, CamlOperatorPicker query, CamlOperatorPicker query2)
         {
-            var newCondition = "";
+            string newCondition;
             if (query.currentCondition != null && query.query == "")
                 newCondition = query.currentCondition;
             else
@@ -18,7 +18,7 @@
             query.currentCondition = null;
         }
 
-        internal static void NewMethod(bool or, CamlOperatorPicker query, string newCondition)
+        internal static void CombineCurrentQueryWithNewCondition(bool or, CamlOperatorPicker query, string newCondition)
         {
             if (query.currentCondition == null)
                 query.currentCondition = newCondition;
