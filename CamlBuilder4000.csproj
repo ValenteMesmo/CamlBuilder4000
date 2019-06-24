@@ -42,17 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CamlBuilder.cs" />
-    <Compile Include="FieldTypes\CamlBoolField.cs" />
-    <Compile Include="FieldTypes\CamlDateField.cs" />
-    <Compile Include="FieldTypes\CamlLookupIdField.cs" />
-    <Compile Include="FieldTypes\CamlNumberField.cs" />
-    <Compile Include="Internal\CamlFieldPicker.cs" />
-    <Compile Include="Internal\CamlOperatorPicker.cs" />
-    <Compile Include="FieldTypes\CamlTextField.cs" />
-    <Compile Include="Internal\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <Import Project="CamlBuilder4000.SharedProject\CamlBuilder4000.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

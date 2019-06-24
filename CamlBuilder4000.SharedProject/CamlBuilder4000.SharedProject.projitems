@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>f86a46bf-a76d-4cc3-8348-209bfe45a80a</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CamlBuilder4000.SharedProject</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CamlBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldTypes\CamlBoolField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldTypes\CamlDateField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldTypes\CamlLookupIdField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldTypes\CamlNumberField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FieldTypes\CamlTextField.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\CamlFieldPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\CamlOperatorPicker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Internal\Helper.cs" />
+  </ItemGroup>
+</Project>

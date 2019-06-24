@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>C:\github\CamlBuilder4000\CamlBuilder4000.Standard\CamlBuilder4000.Standard.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <Import Project="..\CamlBuilder4000.SharedProject\CamlBuilder4000.SharedProject.projitems" Label="Shared" />
+
+</Project>

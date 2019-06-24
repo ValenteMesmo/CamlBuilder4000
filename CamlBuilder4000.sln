@@ -13,7 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CamlBuilder4000.Standard", "CamlBuilder4000.Standard\CamlBuilder4000.Standard.csproj", "{4387E12D-5314-4069-AB2D-6C97C5B098E7}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CamlBuilder4000.SharedProject", "CamlBuilder4000.SharedProject\CamlBuilder4000.SharedProject.shproj", "{F86A46BF-A76D-4CC3-8348-209BFE45A80A}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		CamlBuilder4000.SharedProject\CamlBuilder4000.SharedProject.projitems*{342fa430-0220-4bb9-8607-b2b05525f1ee}*SharedItemsImports = 4
+		CamlBuilder4000.SharedProject\CamlBuilder4000.SharedProject.projitems*{f86a46bf-a76d-4cc3-8348-209bfe45a80a}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -27,6 +35,10 @@ Global
 		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BC0A5EB-4867-47F9-8216-078BAE2A3997}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4387E12D-5314-4069-AB2D-6C97C5B098E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4387E12D-5314-4069-AB2D-6C97C5B098E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4387E12D-5314-4069-AB2D-6C97C5B098E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4387E12D-5314-4069-AB2D-6C97C5B098E7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
