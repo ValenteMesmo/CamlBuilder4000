@@ -1,4 +1,5 @@
 ﻿using CamlBuilder4000;
+using System;
 using Xunit;
 
 namespace UnitTests
@@ -11,6 +12,49 @@ namespace UnitTests
             var actual = CamlBuilder.Start().ToString();
 
             Assert.Equal("", actual);
+        }
+
+        [Fact]
+        public void BugFix() {
+            var expeceted = "<Where>"
+                + "<And>"
+                    + "<Eq>"
+                        + "<FieldRef Name=\"Status\" />"
+                        + "<Value Type=\"Text\">Aprovação do Documento</Value>"
+                    + "</Eq>"
+                    + "<And>"
+                        + "<In>"
+                            + "<FieldRef Name=\"Area\" LookupId=\"TRUE\" />"
+                            + "<Values>"
+                                + "<Value Type=\"Lookup\">1</Value>"
+                            + "</Values>"
+                        + "</In>"
+                        + "<Or>"
+                            + "<Lt>"
+                                + "<FieldRef Name=\"UltimoAlertaDePrazo\" />"
+                                + "<Value IncludeTimeValue=\"FALSE\" Type=\"DateTime\">" + new DateTime(1989, 04, 08).ToString("yyyy-MM-ddTHH:mm:ssZ") + "</Value>"
+                            + "</Lt>"
+                            + "<IsNull>"
+                                + "<FieldRef Name=\"UltimoAlertaDePrazo\" />"
+                            + "</IsNull>"
+                        + "</Or>"
+                    + "</And>"
+                + "</And>"
+            + "</Where>";
+
+            var actual = CamlBuilder.Start()
+                .Text("Status").Equal("Aprovação do Documento")
+                .And(q=> q
+                    .LookupId("Area").In(1)
+                    .And(q2=> q2
+                        .Date("UltimoAlertaDePrazo").LessThan(new DateTime(1989, 04, 08))
+                        .Or()
+                        .Date("UltimoAlertaDePrazo").IsNull()
+                    )
+                )               
+               .ToString();
+
+            Assert.Equal(expeceted, actual);
         }
 
         [Fact]

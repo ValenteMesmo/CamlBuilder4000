@@ -28,9 +28,9 @@ namespace CamlBuilder4000.FieldTypes
         /// <para>Example of related xml:</para>
         /// &lt;Eq&gt;&lt;FieldRef Name=&quot;fieldName&quot; /&gt;&lt;Value Type=&quot;Boolean&quot;&gt;1&lt;/Value&gt;&lt;/Eq&gt;
         /// </summary>
-        public CamlOperatorPicker Equal(bool value)
+        public CamlOperatorPicker IsTrue()
         {
-            var newCondition = $@"<Eq><FieldRef Name=""{fieldName}"" /><Value Type=""Boolean"">{(value ? 1 : 0)}</Value></Eq>";
+            var newCondition = $@"<Eq><FieldRef Name=""{fieldName}"" /><Value Type=""Boolean"">1</Value></Eq>";
 
             Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
 
@@ -39,16 +39,16 @@ namespace CamlBuilder4000.FieldTypes
 
         /// <summary>
         /// <para>Example of related xml:</para>
-        /// &lt;Eq&gt;&lt;FieldRef Name=&quot;fieldName&quot; /&gt;&lt;Value Type=&quot;Boolean&quot;&gt;1&lt;/Value&gt;&lt;/Eq&gt;
-        /// </summary>
-        public CamlOperatorPicker IsTrue() =>
-            Equal(true);
-
-        /// <summary>
-        /// <para>Example of related xml:</para>
         /// &lt;Eq&gt;&lt;FieldRef Name=&quot;fieldName&quot; /&gt;&lt;Value Type=&quot;Boolean&quot;&gt;0&lt;/Value&gt;&lt;/Eq&gt;
         /// </summary>
-        public CamlOperatorPicker IsFalse() =>
-            Equal(false);
+        public CamlOperatorPicker IsFalse()
+        {
+            //<Or><IsNull><FieldRef Name=""{fieldName}"" /></IsNull><Eq><FieldRef Name=""{fieldName}"" /><Value Type='Text'></Value></Eq></Or>
+            var newCondition = $@"<Or><IsNull><FieldRef Name=""{fieldName}"" /></IsNull><Eq><FieldRef Name=""{fieldName}"" /><Value Type=""Boolean"">0</Value></Eq></Or>";
+
+            Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
+
+            return query;
+        }
     }
 }

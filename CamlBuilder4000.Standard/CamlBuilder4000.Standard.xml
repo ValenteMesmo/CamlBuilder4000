@@ -29,12 +29,6 @@
             Returns the caml XML as string
             </summary>
         </member>
-        <member name="M:CamlBuilder4000.FieldTypes.CamlBoolField.Equal(System.Boolean)">
-            <summary>
-            <para>Example of related xml:</para>
-            &lt;Eq&gt;&lt;FieldRef Name=&quot;fieldName&quot; /&gt;&lt;Value Type=&quot;Boolean&quot;&gt;1&lt;/Value&gt;&lt;/Eq&gt;
-            </summary>
-        </member>
         <member name="M:CamlBuilder4000.FieldTypes.CamlBoolField.IsTrue">
             <summary>
             <para>Example of related xml:</para>

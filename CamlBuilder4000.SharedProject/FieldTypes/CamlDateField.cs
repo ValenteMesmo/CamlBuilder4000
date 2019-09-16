@@ -40,14 +40,24 @@ namespace CamlBuilder4000.FieldTypes
         {
             //TODO: test
             var newCondition =
-                $@"<Geq>
-                    <FieldRef Name=""{fieldName}"" />
-                    <Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{from.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>
-                  </Geq>
-                  <Leq>
-                    <FieldRef Name=""{fieldName}"" />
-                    <Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{to.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>
-                  </Leq>";
+                "<Geq>"
+                + $@"<FieldRef Name=""{fieldName}"" />"
+                    + $@"<Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{from.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>"
+                  + $@"</Geq>"
+                  + $@"<Leq>"
+                    + $@"<FieldRef Name=""{fieldName}"" />"
+                    + $@"<Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{to.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>"
+                  + $@"</Leq>";
+            Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
+
+            return query;
+        }
+
+        //TODO: remove code duplication
+        public CamlOperatorPicker IsNull()
+        {
+            var newCondition = $@"<IsNull><FieldRef Name=""{fieldName}"" /></IsNull>";
+
             Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
 
             return query;
@@ -64,10 +74,10 @@ namespace CamlBuilder4000.FieldTypes
         {
             //TODO: test
             var newCondition =
-                $@"<Gt>
-                    <FieldRef Name=""{fieldName}"" />
-                    <Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>
-                  </Gt>";
+                $@"<Gt>"
+                    + $@"<FieldRef Name=""{fieldName}"" />"
+                    + $@"<Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>"
+                  + $@"</Gt>";
             Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
 
             return query;
@@ -84,10 +94,10 @@ namespace CamlBuilder4000.FieldTypes
         {
             //TODO: test
             var newCondition =
-                $@"<Lt>
-                    <FieldRef Name=""{fieldName}"" />
-                    <Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>
-                  </Lt>";
+                $@"<Lt>"
+                    + $@"<FieldRef Name=""{fieldName}"" />"
+                    + $@"<Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>"
+                  + $@"</Lt>";
             Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
 
             return query;
@@ -104,10 +114,10 @@ namespace CamlBuilder4000.FieldTypes
         {
             //TODO: test
             var newCondition =
-                $@"<Leq>
-                    <FieldRef Name=""{fieldName}"" />
-                    <Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>
-                  </Leq>";
+                $@"<Leq>"
+                    + $@"<FieldRef Name=""{fieldName}"" />"
+                    + $@"<Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>"
+                  + $@"</Leq>";
             Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
 
             return query;
@@ -124,10 +134,10 @@ namespace CamlBuilder4000.FieldTypes
         {
             //TODO: test
             var newCondition =
-                $@"<Geq>
-                    <FieldRef Name=""{fieldName}"" />
-                    <Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>
-                  </Geq>";
+                $@"<Geq>"
+                    + $@"<FieldRef Name=""{fieldName}"" />"
+                    + $@"<Value IncludeTimeValue=""FALSE"" Type=""DateTime"">{date.ToString("yyyy-MM-ddTHH:mm:ssZ")}</Value>"
+                  + $@"</Geq>";
             Helper.CombineCurrentQueryWithNewCondition(or, query, newCondition);
 
             return query;
