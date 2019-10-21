@@ -10,7 +10,7 @@ namespace UnitTests
         public void EmptyQuery()
         {
             var actual = CamlBuilder.Start().ToString();
-
+            
             Assert.Equal("", actual);
         }
 
