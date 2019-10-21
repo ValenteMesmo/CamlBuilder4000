@@ -1,5 +1,7 @@
 ﻿namespace CamlBuilder.NetFramework
 
+open System
+
 //where builder
 //orderby
 //viewfields
@@ -63,10 +65,16 @@ module CamlBuilderInternals =
             )
 
     and LookupIdFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =        
-        member this.IsIn (value : int) = 
+        member this.IsIn ([<ParamArray>] values : int array) = 
+            let createNode value = sprintf "<Value Type='Lookup'>%i</Value>" value
+            let formattedValues = 
+                values 
+                |> Array.map createNode 
+                |> System.String.Concat
+
             LogicalOperatorPicker(                 
-                parentBuild                     
-                    <| createInNode(fieldDefinition + createValuesNode(sprintf "<Value Type='Lookup'>%i</Value>" value))
+                createInNode(fieldDefinition + createValuesNode(formattedValues))
+                |> parentBuild                     
             )
 
     and DateFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =        
@@ -96,8 +104,9 @@ module CamlBuilderInternals =
             new DateFieldFilterPicker(parentBuild, sprintf "<FieldRef Name='%s'/>" fieldName) 
 
     type WhereBuilder(handler : FieldTypePicker -> LogicalOperatorPicker) =        
-        let aaa = handler(new FieldTypePicker(fun f -> f))
-        member this.Build = createWhereNode <| aaa.Build
+        let whereContent = handler(new FieldTypePicker(fun f -> f))
+        member this.Build = createWhereNode <| whereContent.Build
+        //member this.OrderBy fieldName = ""
 
 [<AbstractClass; Sealed>]
 type CamlBuilder private () =
