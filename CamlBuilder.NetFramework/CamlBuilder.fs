@@ -1,6 +1,6 @@
-﻿namespace ValenteMesmo
+﻿namespace ValenteMesmo.CamlQueryBuilder
 
-open ValenteMesmo.Internals
+open ValenteMesmo.CamlQueryBuilder.Internals
 //where builder
 //orderby
 //viewfields
@@ -11,6 +11,6 @@ open ValenteMesmo.Internals
 //  using Membership
 
 [<AbstractClass; Sealed>]
-type CamlBuilder private () =
+type CamlQuery private () =
     static member Where handler =
         new WhereBuilder(handler)

@@ -1,10 +1,10 @@
-﻿namespace ValenteMesmo.Internals.PartPicker
+﻿namespace ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 
 open System
-open ValenteMesmo.Internals.Xml.XmlNodeFactories
+open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
 
 type LogicalOperatorPicker(parentBuild) =
-    member this.Build =
+    member this.Build() =
         parentBuild
 
     member this.And() =
@@ -15,20 +15,20 @@ type LogicalOperatorPicker(parentBuild) =
 
     member this.And(handler : FieldTypePicker -> LogicalOperatorPicker) =
         let result = handler(new FieldTypePicker(sprintf "%s"))
-        new LogicalOperatorPicker(createAndNode parentBuild result.Build)
+        new LogicalOperatorPicker(createAndNode parentBuild (result.Build()))
 
 and FieldTypePicker(parentBuild : string -> string) =
-    member this.Build =
+    member this.Build() =
         parentBuild
 
     member this.Text fieldName = 
-        new TextFieldFilterPicker(this.Build, createFieldRef fieldName) 
+        new TextFieldFilterPicker(this.Build(), createFieldRef fieldName) 
 
     member this.LookupId fieldName = 
-        new LookupIdFieldFilterPicker(this.Build, createLookupIdFieldRef fieldName) 
+        new LookupIdFieldFilterPicker(this.Build(), createLookupIdFieldRef fieldName) 
 
     member this.Date fieldName = 
-        new DateFieldFilterPicker(this.Build, createFieldRef fieldName) 
+        new DateFieldFilterPicker(this.Build(), createFieldRef fieldName) 
 
 and TextFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =        
     member this.IsEqualTo value = 

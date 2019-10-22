@@ -3,15 +3,14 @@ namespace ``Um nome qualquer``
 module ``agora sim`` =
 
     open Xunit
-    open ValenteMesmo
-    
+    open ValenteMesmo.CamlQueryBuilder
 
     [<Fact>]
     let ``1 filter test`` () =
-        let sut = CamlBuilder.Where(fun f-> f
+        let sut = CamlQuery.Where(fun f-> f
                                                 .Text("campo")
                                                 .IsEqualTo("valor"))
-                            .Build
+                            .Build()
                             
         Assert.Equal("<Where>\
                         <Eq>\
@@ -22,7 +21,7 @@ module ``agora sim`` =
 
     [<Fact>]
     let ``2 filters test (and)`` () =
-        let sut = CamlBuilder
+        let sut = CamlQuery
                     .Where(fun f-> f
                                     .Text("campo")
                                     .IsEqualTo("valor")
@@ -30,7 +29,7 @@ module ``agora sim`` =
                                     .Text("campo2")
                                     .IsEqualTo("valor2")
                     )
-                    .Build
+                    .Build()
 
         Assert.Equal("<Where>\
                         <And>\
@@ -47,7 +46,7 @@ module ``agora sim`` =
 
     [<Fact>]
     let ``2 filters test (or)`` () =
-        let sut = CamlBuilder
+        let sut = CamlQuery
                     .Where(fun f-> f
                                     .Text("campo")
                                     .IsEqualTo("valor")
@@ -55,7 +54,7 @@ module ``agora sim`` =
                                     .Text("campo2")
                                     .IsEqualTo("valor2")
                     )
-                    .Build
+                    .Build()
 
         Assert.Equal("<Where>\
                         <Or>\
@@ -101,7 +100,7 @@ module ``agora sim`` =
                 </And>\
             </Where>"
 
-        let actual = CamlBuilder
+        let actual = CamlQuery
                         .Where(fun f -> f
                                             .Text("Status")
                                             .IsEqualTo("Aprovação do Documento")
@@ -117,7 +116,7 @@ module ``agora sim`` =
                                                             )
                                             )               
                         )        
-                        .Build;
+                        .Build();
 
         Assert.Equal(expeceted, actual);
 
@@ -143,7 +142,7 @@ module ``agora sim`` =
                 </And>\
             </Where>"
 
-        let actual = CamlBuilder
+        let actual = CamlQuery
                         .Where(fun f-> f
                                         .Text("a").IsEqualTo("1")
                                         .And()
@@ -151,7 +150,7 @@ module ``agora sim`` =
                                         .And()
                                         .Text("c").IsEqualTo("3")
                         )
-                        .Build;
+                        .Build();
 
         Assert.Equal(expected, actual);
 
@@ -205,7 +204,7 @@ module ``agora sim`` =
                 </And>\
             </Where>"
 
-        let actual = CamlBuilder
+        let actual = CamlQuery
                         .Where(fun f-> f
                                         .LookupId("Area").IsIn(1, 2, 3)
                                         .And(fun q -> q
@@ -220,6 +219,6 @@ module ``agora sim`` =
                                                         .Text("Status").IsEqualTo("5")
                                                         .Or()
                                                         .Text("Status").IsEqualTo("6"))
-                                        ).Build
+                                        ).Build()
 
         Assert.Equal(expected, actual)

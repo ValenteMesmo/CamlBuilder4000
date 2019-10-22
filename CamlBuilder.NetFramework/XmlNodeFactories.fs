@@ -1,4 +1,4 @@
-﻿namespace ValenteMesmo.Internals.Xml
+﻿namespace ValenteMesmo.CamlQueryBuilder.Internals.Xml
 
 module internal XmlNodeFactories =
 
