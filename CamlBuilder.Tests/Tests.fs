@@ -3,7 +3,8 @@ namespace ``Um nome qualquer``
 module ``agora sim`` =
 
     open Xunit
-    open CamlBuilder.NetFramework
+    open ValenteMesmo
+    
 
     [<Fact>]
     let ``1 filter test`` () =
@@ -11,7 +12,7 @@ module ``agora sim`` =
                                                 .Text("campo")
                                                 .IsEqualTo("valor"))
                             .Build
-
+                            
         Assert.Equal("<Where>\
                         <Eq>\
                             <FieldRef Name='campo'/>\
