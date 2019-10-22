@@ -6,18 +6,40 @@ module ``agora sim`` =
     open ValenteMesmo.CamlQueryBuilder
 
     [<Fact>]
+    let ``RowLimit after where`` () =
+        let sut = CamlQuery.Where(fun f-> f
+                                                .Text("campo")
+                                                .IsEqualTo("valor"))
+                            .RowLimit(100)
+                            .Build()
+                            
+        Assert.Equal("\
+                <View>\
+                    <Where>\
+                        <Eq>\
+                            <FieldRef Name='campo'/>\
+                            <Value Type='Text'><![CDATA[valor]]></Value>\
+                        </Eq>\
+                    </Where>\
+                    <RowLimit Paged='False'>100</RowLimit>\
+                </View>", sut)
+
+    [<Fact>]
     let ``1 filter test`` () =
         let sut = CamlQuery.Where(fun f-> f
                                                 .Text("campo")
                                                 .IsEqualTo("valor"))
                             .Build()
                             
-        Assert.Equal("<Where>\
+        Assert.Equal("\
+                <View>\
+                    <Where>\
                         <Eq>\
                             <FieldRef Name='campo'/>\
                             <Value Type='Text'><![CDATA[valor]]></Value>\
                         </Eq>\
-                      </Where>", sut)
+                    </Where>\
+                </View>", sut)
 
     [<Fact>]
     let ``2 filters test (and)`` () =
@@ -31,18 +53,21 @@ module ``agora sim`` =
                     )
                     .Build()
 
-        Assert.Equal("<Where>\
-                        <And>\
-                            <Eq>\
-                                <FieldRef Name='campo'/>\
-                                <Value Type='Text'><![CDATA[valor]]></Value>\
-                            </Eq>\
-                            <Eq>\
-                                <FieldRef Name='campo2'/>\
-                                <Value Type='Text'><![CDATA[valor2]]></Value>\
-                            </Eq>\
-                        </And>\
-                      </Where>", sut)
+        Assert.Equal("\
+            <View>\
+                <Where>\
+                    <And>\
+                        <Eq>\
+                            <FieldRef Name='campo'/>\
+                            <Value Type='Text'><![CDATA[valor]]></Value>\
+                        </Eq>\
+                        <Eq>\
+                            <FieldRef Name='campo2'/>\
+                            <Value Type='Text'><![CDATA[valor2]]></Value>\
+                        </Eq>\
+                    </And>\
+                </Where>\
+            </View>", sut)
 
     [<Fact>]
     let ``2 filters test (or)`` () =
@@ -56,49 +81,54 @@ module ``agora sim`` =
                     )
                     .Build()
 
-        Assert.Equal("<Where>\
-                        <Or>\
-                            <Eq>\
-                                <FieldRef Name='campo'/>\
-                                <Value Type='Text'><![CDATA[valor]]></Value>\
-                            </Eq>\
-                            <Eq>\
-                                <FieldRef Name='campo2'/>\
-                                <Value Type='Text'><![CDATA[valor2]]></Value>\
-                            </Eq>\
-                        </Or>\
-                      </Where>", sut)
+        Assert.Equal("\
+            <View>\
+                <Where>\
+                    <Or>\
+                        <Eq>\
+                            <FieldRef Name='campo'/>\
+                            <Value Type='Text'><![CDATA[valor]]></Value>\
+                        </Eq>\
+                        <Eq>\
+                            <FieldRef Name='campo2'/>\
+                            <Value Type='Text'><![CDATA[valor2]]></Value>\
+                        </Eq>\
+                    </Or>\
+                </Where>\
+            </View>", sut)
 
     [<Fact>]
     let ``bug fix``() =
         let expeceted = 
-            "<Where>\
-                <And>\
-                    <Eq>\
-                        <FieldRef Name='Status'/>\
-                        <Value Type='Text'><![CDATA[Aprovação do Documento]]></Value>\
-                    </Eq>\
+            "<View>\
+                <Where>\
                     <And>\
-                        <In>\
-                            <FieldRef Name='Area' LookupId='TRUE'/>\
-                            <Values>\
-                                <Value Type='Lookup'>1</Value>\
-                            </Values>\
-                        </In>\
-                        <Or>\
-                            <Lt>\
-                                <FieldRef Name='UltimoAlertaDePrazo'/>\
-                                <Value IncludeTimeValue='FALSE' Type='DateTime'>\
-                                    1989-04-08T00:00:00Z\
-                                </Value>\
-                            </Lt>\
-                            <IsNull>\
-                                <FieldRef Name='UltimoAlertaDePrazo'/>\
-                            </IsNull>\
-                        </Or>\
+                        <Eq>\
+                            <FieldRef Name='Status'/>\
+                            <Value Type='Text'><![CDATA[Aprovação do Documento]]></Value>\
+                        </Eq>\
+                        <And>\
+                            <In>\
+                                <FieldRef Name='Area' LookupId='TRUE'/>\
+                                <Values>\
+                                    <Value Type='Lookup'>1</Value>\
+                                </Values>\
+                            </In>\
+                            <Or>\
+                                <Lt>\
+                                    <FieldRef Name='UltimoAlertaDePrazo'/>\
+                                    <Value IncludeTimeValue='FALSE' Type='DateTime'>\
+                                        1989-04-08T00:00:00Z\
+                                    </Value>\
+                                </Lt>\
+                                <IsNull>\
+                                    <FieldRef Name='UltimoAlertaDePrazo'/>\
+                                </IsNull>\
+                            </Or>\
+                        </And>\
                     </And>\
-                </And>\
-            </Where>"
+                </Where>\
+            </View>"
 
         let actual = CamlQuery
                         .Where(fun f -> f
@@ -123,24 +153,26 @@ module ``agora sim`` =
     [<Fact>]
     let ``3 filter test``() =
         let expected = 
-            "<Where>\
-                <And>\
+            "<View>\
+                <Where>\
                     <And>\
+                        <And>\
+                            <Eq>\
+                                <FieldRef Name='a'/>\
+                                <Value Type='Text'><![CDATA[1]]></Value>\
+                            </Eq>\
+                            <Eq>\
+                                <FieldRef Name='b'/>\
+                                <Value Type='Text'><![CDATA[2]]></Value>\
+                            </Eq>\
+                        </And>\
                         <Eq>\
-                            <FieldRef Name='a'/>\
-                            <Value Type='Text'><![CDATA[1]]></Value>\
-                        </Eq>\
-                        <Eq>\
-                            <FieldRef Name='b'/>\
-                            <Value Type='Text'><![CDATA[2]]></Value>\
+                            <FieldRef Name='c'/>\
+                            <Value Type='Text'><![CDATA[3]]></Value>\
                         </Eq>\
                     </And>\
-                    <Eq>\
-                        <FieldRef Name='c'/>\
-                        <Value Type='Text'><![CDATA[3]]></Value>\
-                    </Eq>\
-                </And>\
-            </Where>"
+                </Where>\
+            </View>"
 
         let actual = CamlQuery
                         .Where(fun f-> f
@@ -157,52 +189,54 @@ module ``agora sim`` =
     [<Fact>]
     let ``Complex one``() =
         let expected =
-            "<Where>\
-                <And>\
-                    <In>\
-                        <FieldRef Name='Area' LookupId='TRUE'/>\
-                        <Values>\
-                            <Value Type='Lookup'>1</Value>\
-                            <Value Type='Lookup'>2</Value>\
-                            <Value Type='Lookup'>3</Value>\
-                        </Values>\
-                    </In>\
-                    <Or>\
+            "<View>\
+                <Where>\
+                    <And>\
+                        <In>\
+                            <FieldRef Name='Area' LookupId='TRUE'/>\
+                            <Values>\
+                                <Value Type='Lookup'>1</Value>\
+                                <Value Type='Lookup'>2</Value>\
+                                <Value Type='Lookup'>3</Value>\
+                            </Values>\
+                        </In>\
                         <Or>\
                             <Or>\
-                            <Or>\
                                 <Or>\
-                                    <Eq>\
-                                    <FieldRef Name='Status'/>\
-                                        <Value Type='Text'><![CDATA[1]]></Value>\
-                                    </Eq>\
+                                <Or>\
+                                    <Or>\
+                                        <Eq>\
+                                        <FieldRef Name='Status'/>\
+                                            <Value Type='Text'><![CDATA[1]]></Value>\
+                                        </Eq>\
+                                        <Eq>\
+                                            <FieldRef Name='Status'/>\
+                                            <Value Type='Text'><![CDATA[2]]></Value>\
+                                        </Eq>\
+                                    </Or>\
                                     <Eq>\
                                         <FieldRef Name='Status'/>\
-                                        <Value Type='Text'><![CDATA[2]]></Value>\
+                                        <Value Type='Text'><![CDATA[3]]></Value>\
                                     </Eq>\
                                 </Or>\
                                 <Eq>\
                                     <FieldRef Name='Status'/>\
-                                    <Value Type='Text'><![CDATA[3]]></Value>\
+                                    <Value Type='Text'><![CDATA[4]]></Value>\
+                                </Eq>\
+                                </Or>\
+                                <Eq>\
+                                <FieldRef Name='Status'/>\
+                                <Value Type='Text'><![CDATA[5]]></Value>\
                                 </Eq>\
                             </Or>\
                             <Eq>\
                                 <FieldRef Name='Status'/>\
-                                <Value Type='Text'><![CDATA[4]]></Value>\
-                            </Eq>\
-                            </Or>\
-                            <Eq>\
-                            <FieldRef Name='Status'/>\
-                            <Value Type='Text'><![CDATA[5]]></Value>\
+                                <Value Type='Text'><![CDATA[6]]></Value>\
                             </Eq>\
                         </Or>\
-                        <Eq>\
-                            <FieldRef Name='Status'/>\
-                            <Value Type='Text'><![CDATA[6]]></Value>\
-                        </Eq>\
-                    </Or>\
-                </And>\
-            </Where>"
+                    </And>\
+                </Where>\
+            </View>"
 
         let actual = CamlQuery
                         .Where(fun f-> f

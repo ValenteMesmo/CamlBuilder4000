@@ -5,6 +5,12 @@ module internal XmlNodeFactories =
     let createCamlNode nodeName nodeContent = 
         sprintf "<%s>%s</%s>" nodeName nodeContent nodeName 
 
+    let createViewNode content = 
+        createCamlNode "View" content
+
+    let createQueryNode content = 
+        createCamlNode "Query" content
+
     let createWhereNode content = 
         createCamlNode "Where" content
 
@@ -28,6 +34,9 @@ module internal XmlNodeFactories =
 
     let createValuesNode content =
         createCamlNode "Values" content
+
+    let createRowLimitNode(content : int) = 
+        sprintf "<RowLimit Paged='False'>%i</RowLimit>" content
 
     let createTextValueNode content =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content

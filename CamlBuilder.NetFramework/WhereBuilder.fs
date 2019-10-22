@@ -3,7 +3,30 @@
 open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
 open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 
+//TODO: create queryBuilder
+// view>
+//    query>
+//          orderby
+//          where
+//    viewFields
+//    rowlimit
 type WhereBuilder(handler : FieldTypePicker -> LogicalOperatorPicker) =        
     let whereContent = handler(new FieldTypePicker(fun f -> f))
-    member this.Build() = createWhereNode <| whereContent.Build()
-    //member this.OrderBy fieldName = ""
+    
+    member this.Build() =         
+        whereContent.Build()
+        |> createWhereNode
+        |> createQueryNode
+        |> createViewNode
+
+    member this.RowLimit number =
+        new RowContentBuilder(
+            whereContent.Build()
+                |> createWhereNode
+                |> createQueryNode
+            , number
+        ) 
+
+and RowContentBuilder(parentBuild, number : int) =
+    member this.Build() =         
+        parentBuild + createRowLimitNode(number) |> createViewNode
