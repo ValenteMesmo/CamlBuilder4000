@@ -1,31 +1,33 @@
-﻿module XmlNodeFactories 
+﻿namespace ValenteMesmo.Internals.Xml
 
-    let internal createCamlNode nodeName nodeContent = 
+module internal XmlNodeFactories =
+
+    let createCamlNode nodeName nodeContent = 
         sprintf "<%s>%s</%s>" nodeName nodeContent nodeName 
 
-    let internal createWhereNode content = 
+    let createWhereNode content = 
         createCamlNode "Where" content
 
-    let internal createAndNode a b =
+    let createAndNode a b =
         createCamlNode "And" (a + b)
 
-    let internal createOrNode a b =
+    let createOrNode a b =
         createCamlNode "Or" (a + b)
 
-    let internal createEqualNode content =
+    let createEqualNode content =
         createCamlNode "Eq" content
 
-    let internal createInNode content =
+    let createInNode content =
         createCamlNode "In" content    
 
-    let internal createLessThanNode content = 
+    let createLessThanNode content = 
         createCamlNode "Lt" content
 
-    let internal createIsNullNode content =
+    let createIsNullNode content =
         createCamlNode "IsNull" content
 
-    let internal createValuesNode content =
+    let createValuesNode content =
         createCamlNode "Values" content
 
-    let internal createTextValueNode content =
+    let createTextValueNode content =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content
