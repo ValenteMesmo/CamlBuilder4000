@@ -22,13 +22,13 @@ and FieldTypePicker(parentBuild : string -> string) =
         parentBuild
 
     member this.Text fieldName = 
-        new TextFieldFilterPicker(this.Build, sprintf "<FieldRef Name='%s'/>" fieldName) 
+        new TextFieldFilterPicker(this.Build, createFieldRef fieldName) 
 
     member this.LookupId fieldName = 
-        new LookupIdFieldFilterPicker(this.Build, sprintf "<FieldRef Name='%s' LookupId='TRUE'/>" fieldName) 
+        new LookupIdFieldFilterPicker(this.Build, createLookupIdFieldRef fieldName) 
 
     member this.Date fieldName = 
-        new DateFieldFilterPicker(this.Build, sprintf "<FieldRef Name='%s'/>" fieldName) 
+        new DateFieldFilterPicker(this.Build, createFieldRef fieldName) 
 
 and TextFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =        
     member this.IsEqualTo value = 
@@ -39,7 +39,7 @@ and TextFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =
 
 and LookupIdFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =        
     member this.IsIn ([<ParamArray>] values : int array) = 
-        let createNode value = sprintf "<Value Type='Lookup'>%i</Value>" value
+        let createNode value = createLookupValueNode value
         let formattedValues = 
             values 
             |> Array.map createNode 
@@ -54,7 +54,7 @@ and DateFieldFilterPicker(parentBuild : string -> string, fieldDefinition) =
     member this.IsLessThan (value : System.DateTime) = 
         LogicalOperatorPicker(                 
             parentBuild                     
-                <| createLessThanNode(fieldDefinition + (sprintf "<Value IncludeTimeValue='FALSE' Type='DateTime'>%s</Value>" (value.ToString("yyyy-MM-ddTHH:mm:ssZ"))))
+                <| createLessThanNode(fieldDefinition + createDateOnlyValue(value))
         )
 
     member this.IsNull() =

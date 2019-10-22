@@ -31,3 +31,17 @@ module internal XmlNodeFactories =
 
     let createTextValueNode content =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content
+
+    let createLookupValueNode value =
+        sprintf "<Value Type='Lookup'>%i</Value>" value
+
+    let createDateOnlyValue(value : System.DateTime) = 
+        sprintf
+            <| "<Value IncludeTimeValue='FALSE' Type='DateTime'>%s</Value>" 
+            <| value.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+    let createFieldRef fieldName = 
+        sprintf "<FieldRef Name='%s'/>" fieldName
+
+    let createLookupIdFieldRef fieldName = 
+         sprintf "<FieldRef Name='%s' LookupId='TRUE'/>" fieldName
