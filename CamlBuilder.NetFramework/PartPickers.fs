@@ -4,7 +4,7 @@ open System
 open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
 
 type LogicalOperatorPicker(parentBuild) =
-    member this.Build() =
+    member internal this.Build() =
         parentBuild
 
     member this.And() =
@@ -18,7 +18,7 @@ type LogicalOperatorPicker(parentBuild) =
         new LogicalOperatorPicker(createAndNode parentBuild (result.Build()))
 
 and FieldTypePicker(parentBuild : string -> string) =
-    member this.Build() =
+    member internal this.Build() =
         parentBuild
 
     member this.Text fieldName = 
