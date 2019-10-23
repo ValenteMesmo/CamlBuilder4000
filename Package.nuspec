@@ -2,14 +2,18 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>ValenteMesmo.CamlBuilder</id>
-    <version>0.0.1</version>
+    <version>0.0.6</version>
+    <title>CamlBuilder</title>
     <authors>ValenteMesmo</authors>
     <owners>ValenteMesmo</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Create caml query xmls with ease</description>
     <releaseNotes></releaseNotes>
     <copyright></copyright>
-    <tags>Sharepoint CAML QUERY</tags>
+    <tags>sharepoint caml query</tags>
+    <dependencies>
+      <dependency id="FSharp.Core" version="4.7.0" />
+    </dependencies>
   </metadata>
   <files>
     <file src="CamlBuilder.NetFramework\bin\Release\CamlBuilder.NetFramework.dll" target="lib\net45\CamlBuilder.NetFramework.dll" />
