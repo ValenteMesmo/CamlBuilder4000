@@ -10,8 +10,8 @@ open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 //          where
 //    viewFields
 //    rowlimit
-type WhereBuilder(handler : FieldTypePicker -> LogicalOperatorPicker) =        
-    let whereContent = handler(new FieldTypePicker(fun f -> f))
+type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>) =        
+    let whereContent = handler.Invoke(new FieldTypePicker(fun f -> f))
     
     member this.Build() =         
         whereContent.Build()
