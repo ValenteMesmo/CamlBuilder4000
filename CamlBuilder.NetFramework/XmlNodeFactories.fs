@@ -23,6 +23,9 @@ module internal XmlNodeFactories =
     let createEqualNode content =
         createCamlNode "Eq" content
 
+    let createNotEqualNode content =
+        createCamlNode "Neq" content
+
     let createInNode content =
         createCamlNode "In" content    
 

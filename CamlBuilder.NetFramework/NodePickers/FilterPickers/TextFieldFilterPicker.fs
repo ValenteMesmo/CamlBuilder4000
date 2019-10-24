@@ -1,8 +1,8 @@
 ﻿namespace ValenteMesmo.CamlQueryBuilder
 
-open System.Runtime.CompilerServices
-open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
+open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
+open System.Runtime.CompilerServices
 
 [<Extension>]
 type TextFieldFilterPickerExtensions =
@@ -12,6 +12,17 @@ type TextFieldFilterPickerExtensions =
         LogicalOperatorPicker(                 
             picker.Build(
                 createEqualNode(
+                    picker.fieldDefinition 
+                    + createTextValueNode(value)
+                )
+            )
+        )
+
+    [<Extension>]    
+    static member IsNotEqualTo(picker: TextFieldFilterPicker, value : string) = 
+        LogicalOperatorPicker(                 
+            picker.Build(
+                createNotEqualNode(
                     picker.fieldDefinition 
                     + createTextValueNode(value)
                 )

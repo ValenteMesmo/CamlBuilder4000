@@ -47,7 +47,7 @@
     <Compile Include="NodePickers\Declarations.fs" />
     <Compile Include="NodePickers\LogicalOperatorPicker.fs" />
     <Compile Include="NodePickers\FieldTypePicker.fs" />
-    <Compile Include="NodePickers\TextFieldFilterPicker.fs" />
+    <Compile Include="NodePickers\FilterPickers\TextFieldFilterPicker.fs" />
     <Compile Include="WhereBuilder.fs" />
     <Compile Include="CamlBuilder.fs" />
     <Content Include="packages.config" />

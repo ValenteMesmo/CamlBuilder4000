@@ -1,109 +1,36 @@
-namespace ``Um nome qualquer`` 
+namespace ``Unit tests`` 
 
-module ``agora sim`` =
+module ``Bug fix`` =
 
     open Xunit
     open ValenteMesmo.CamlQueryBuilder
 
     [<Fact>]
     let ``RowLimit after where`` () =
-        let sut = CamlQuery.Where(fun f-> f
-                                                .Text("campo")
-                                                .IsEqualTo("valor"))
-                            .RowLimit(100)
-                            .Build()
-                            
-        Assert.Equal("\
-                <View>\
-                    <Query>\
-                        <Where>\
-                            <Eq>\
-                                <FieldRef Name='campo'/>\
-                                <Value Type='Text'><![CDATA[valor]]></Value>\
-                            </Eq>\
-                        </Where>\
-                    </Query>\
-                    <RowLimit Paged='False'>100</RowLimit>\
-                </View>", sut)
-
-    [<Fact>]
-    let ``1 filter test`` () =
-        let sut = CamlQuery.Where(fun f-> f
-                                                .Text("campo")
-                                                .IsEqualTo("valor"))
-                            .Build()
-                            
-        Assert.Equal("\
-                <View>\
-                    <Query>\
-                        <Where>\
-                            <Eq>\
-                                <FieldRef Name='campo'/>\
-                                <Value Type='Text'><![CDATA[valor]]></Value>\
-                            </Eq>\
-                        </Where>\
-                    </Query>\
-                </View>", sut)
-
-    [<Fact>]
-    let ``2 filters test (and)`` () =
-        let sut = CamlQuery
-                    .Where(fun f-> f
-                                    .Text("campo")
-                                    .IsEqualTo("valor")
-                                    .And()
-                                    .Text("campo2")
-                                    .IsEqualTo("valor2")
-                    )
-                    .Build()
-
-        Assert.Equal("\
+        let expected ="\
             <View>\
                 <Query>\
                     <Where>\
-                        <And>\
-                            <Eq>\
-                                <FieldRef Name='campo'/>\
-                                <Value Type='Text'><![CDATA[valor]]></Value>\
-                            </Eq>\
-                            <Eq>\
-                                <FieldRef Name='campo2'/>\
-                                <Value Type='Text'><![CDATA[valor2]]></Value>\
-                            </Eq>\
-                        </And>\
+                        <Eq>\
+                            <FieldRef Name='campo'/>\
+                            <Value Type='Text'><![CDATA[valor]]></Value>\
+                        </Eq>\
                     </Where>\
                 </Query>\
-            </View>", sut)
+                <RowLimit Paged='False'>100</RowLimit>\
+            </View>"
 
-    [<Fact>]
-    let ``2 filters test (or)`` () =
-        let sut = CamlQuery
-                    .Where(fun f-> f
-                                    .Text("campo")
-                                    .IsEqualTo("valor")
-                                    .Or()
-                                    .Text("campo2")
-                                    .IsEqualTo("valor2")
-                    )
-                    .Build()
-
-        Assert.Equal("\
-            <View>\
-                <Query>\
-                    <Where>\
-                        <Or>\
-                            <Eq>\
-                                <FieldRef Name='campo'/>\
-                                <Value Type='Text'><![CDATA[valor]]></Value>\
-                            </Eq>\
-                            <Eq>\
-                                <FieldRef Name='campo2'/>\
-                                <Value Type='Text'><![CDATA[valor2]]></Value>\
-                            </Eq>\
-                        </Or>\
-                    </Where>\
-                </Query>\
-            </View>", sut)
+        let actual = 
+            CamlQuery
+                .Where(
+                    fun f-> f
+                                .Text("campo")
+                                .IsEqualTo("valor")
+                )
+                .RowLimit(100)
+                .Build()
+                            
+        Assert.Equal(expected, actual)
 
     [<Fact>]
     let ``bug fix``() =
@@ -159,44 +86,6 @@ module ``agora sim`` =
                         .Build();
 
         Assert.Equal(expeceted, actual);
-
-    [<Fact>]
-    let ``3 filter test``() =
-        let expected = 
-            "<View>\
-                <Query>\
-                    <Where>\
-                        <And>\
-                            <And>\
-                                <Eq>\
-                                    <FieldRef Name='a'/>\
-                                    <Value Type='Text'><![CDATA[1]]></Value>\
-                                </Eq>\
-                                <Eq>\
-                                    <FieldRef Name='b'/>\
-                                    <Value Type='Text'><![CDATA[2]]></Value>\
-                                </Eq>\
-                            </And>\
-                            <Eq>\
-                                <FieldRef Name='c'/>\
-                                <Value Type='Text'><![CDATA[3]]></Value>\
-                            </Eq>\
-                        </And>\
-                    </Where>\
-                </Query>\
-            </View>"
-
-        let actual = CamlQuery
-                        .Where(fun f-> f
-                                        .Text("a").IsEqualTo("1")
-                                        .And()
-                                        .Text("b").IsEqualTo("2")
-                                        .And()
-                                        .Text("c").IsEqualTo("3")
-                        )
-                        .Build();
-
-        Assert.Equal(expected, actual);
 
     [<Fact>]
     let ``Complex one``() =
