@@ -1,21 +1,19 @@
 ﻿namespace ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 
-open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
-
-type LogicalOperatorPicker(parentBuild) =
+type LogicalOperatorPicker internal (parentBuild) =
     member internal this.Build() : string = parentBuild
 
-type FieldTypePicker(parentBuild : string -> string) =
+type FieldTypePicker internal (parentBuild : string -> string) =
     member internal this.Build() = parentBuild
 
-type TextFieldFilterPicker(parentBuild : string -> string, fieldDefinition : string) =
+type TextFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =
     member internal this.Build(a) = parentBuild a
     member internal this.fieldDefinition = fieldDefinition 
 
-type LookupIdFieldFilterPicker(parentBuild : string -> string, fieldDefinition : string) =        
+type LookupIdFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
     member internal this.fieldDefinition = fieldDefinition
     member internal this.Build = parentBuild
 
-type DateFieldFilterPicker(parentBuild : string -> string, fieldDefinition : string) =        
+type DateFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
     member internal this.fieldDefinition = fieldDefinition
     member internal this.Build = parentBuild

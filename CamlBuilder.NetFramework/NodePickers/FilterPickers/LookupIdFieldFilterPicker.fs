@@ -17,7 +17,7 @@ type LookupIdFieldFilterPickerExtensions =
             |> Array.map createNode 
             |> System.String.Concat
 
-        LogicalOperatorPicker(                 
+        new LogicalOperatorPicker(                 
             createInNode(picker.fieldDefinition + createValuesNode(formattedValues))
             |> picker.Build
         )
