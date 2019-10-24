@@ -38,7 +38,7 @@ module internal XmlNodeFactories =
     let createRowLimitNode(content : int) = 
         sprintf "<RowLimit Paged='False'>%i</RowLimit>" content
 
-    let createTextValueNode content =
+    let createTextValueNode(content : string) =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content
 
     let createLookupValueNode value =
