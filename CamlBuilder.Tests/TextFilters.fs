@@ -54,3 +54,28 @@ module ``Text Filters`` =
                 .Build()
                             
         Assert.Equal(expected, actual)
+
+    [<Fact>]
+    let ``Contains`` () =
+        let expected ="\
+            <View>\
+                <Query>\
+                    <Where>\
+                        <Contains>\
+                            <FieldRef Name='Title'/>\
+                            <Value Type='Text'><![CDATA[2]]></Value>\
+                        </Contains>\
+                    </Where>\
+                </Query>\
+            </View>"
+            
+        let actual = 
+            CamlQuery
+                .Where(
+                    fun f-> f
+                                .Text("Title")
+                                .Contains("2")
+                )
+                .Build()
+                            
+        Assert.Equal(expected, actual)
