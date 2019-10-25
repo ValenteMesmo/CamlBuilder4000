@@ -29,3 +29,13 @@ type TextFieldFilterPickerExtensions =
             )
         )
 
+    [<Extension>]    
+    static member Contains(picker: TextFieldFilterPicker, value : string) = 
+        LogicalOperatorPicker(                 
+            picker.Build(
+                createContainsNode(
+                    picker.fieldDefinition 
+                    + createTextValueNode(value)
+                )
+            )
+        )
