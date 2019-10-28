@@ -13,7 +13,11 @@ type FieldTypePickerExtensions =
 
     [<Extension>]
     static member LookupId(picker: FieldTypePicker, fieldName: string) = 
-        new LookupIdFieldFilterPicker(picker.Build(), createLookupIdFieldRef fieldName) 
+        new LookupFieldFilterPicker(picker.Build(), createLookupIdFieldRef fieldName) 
+
+    [<Extension>]
+    static member LookupIdMulti(picker: FieldTypePicker, fieldName: string) = 
+        new LookupMultiFieldFilterPicker(picker.Build(), createLookupIdFieldRef fieldName) 
 
     [<Extension>]
     static member Date(picker: FieldTypePicker, fieldName: string) = 

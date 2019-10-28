@@ -47,7 +47,7 @@ module internal XmlNodeFactories =
     let createTextValueNode(content : string) =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content
 
-    let createLookupValueNode value =
+    let createLookupValueNode(value : int) =
         sprintf "<Value Type='Lookup'>%i</Value>" value
 
     let createDateOnlyValue(value : System.DateTime) = 

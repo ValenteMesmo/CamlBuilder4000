@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Lookup.fs" />
     <Compile Include="TextFilters.fs" />
     <Compile Include="LogicalConditionsRepeated.fs" />
     <Compile Include="BugFix.fs" />

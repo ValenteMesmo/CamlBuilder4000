@@ -10,7 +10,11 @@ type TextFieldFilterPicker internal (parentBuild : string -> string, fieldDefini
     member internal this.Build(a) = parentBuild a
     member internal this.fieldDefinition = fieldDefinition 
 
-type LookupIdFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
+type LookupFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
+    member internal this.fieldDefinition = fieldDefinition
+    member internal this.Build = parentBuild
+
+type LookupMultiFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
     member internal this.fieldDefinition = fieldDefinition
     member internal this.Build = parentBuild
 

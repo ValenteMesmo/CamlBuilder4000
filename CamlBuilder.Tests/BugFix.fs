@@ -44,12 +44,10 @@ module ``Bug fix`` =
                                 <Value Type='Text'><![CDATA[Aprovação do Documento]]></Value>\
                             </Eq>\
                             <And>\
-                                <In>\
+                                <Eq>\
                                     <FieldRef Name='Area' LookupId='TRUE'/>\
-                                    <Values>\
-                                        <Value Type='Lookup'>1</Value>\
-                                    </Values>\
-                                </In>\
+                                    <Value Type='Lookup'>1</Value>\
+                                </Eq>\
                                 <Or>\
                                     <Lt>\
                                         <FieldRef Name='UltimoAlertaDePrazo'/>\
@@ -72,8 +70,8 @@ module ``Bug fix`` =
                                             .Text("Status")
                                             .IsEqualTo("Aprovação do Documento")
                                             .And(fun g -> g
-                                                            .LookupId("Area")
-                                                            .IsIn(1)
+                                                            .LookupIdMulti("Area")
+                                                            .Contains(1)
                                                             .And(fun h -> h
                                                                             .Date("UltimoAlertaDePrazo")
                                                                             .IsLessThan(new System.DateTime(1989, 04, 08))
@@ -94,14 +92,10 @@ module ``Bug fix`` =
                 <Query>\
                     <Where>\
                         <And>\
-                            <In>\
+                            <Eq>\
                                 <FieldRef Name='Area' LookupId='TRUE'/>\
-                                <Values>\
-                                    <Value Type='Lookup'>1</Value>\
-                                    <Value Type='Lookup'>2</Value>\
-                                    <Value Type='Lookup'>3</Value>\
-                                </Values>\
-                            </In>\
+                                <Value Type='Lookup'>2</Value>\
+                            </Eq>\
                             <Or>\
                                 <Or>\
                                     <Or>\
@@ -143,7 +137,7 @@ module ``Bug fix`` =
 
         let actual = CamlQuery
                         .Where(fun f-> f
-                                        .LookupId("Area").IsIn(1, 2, 3)
+                                        .LookupIdMulti("Area").Contains(2)
                                         .And(fun q -> q
                                                         .Text("Status").IsEqualTo("1")
                                                         .Or()

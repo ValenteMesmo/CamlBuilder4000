@@ -48,8 +48,9 @@
     <Compile Include="NodePickers\LogicalOperatorPicker.fs" />
     <Compile Include="NodePickers\FieldTypePicker.fs" />
     <Compile Include="NodePickers\FilterPickers\TextFieldFilterPicker.fs" />
-    <Compile Include="NodePickers\FilterPickers\LookupIdFieldFilterPicker.fs" />
     <Compile Include="NodePickers\FilterPickers\DateFieldFilterPicker.fs" />
+    <Compile Include="NodePickers\FilterPickers\LookupFieldFilterPicker.fs" />
+    <Compile Include="NodePickers\FilterPickers\LookupMultiFieldFilterPicker.fs" />
     <Compile Include="WhereBuilder.fs" />
     <Compile Include="CamlBuilder.fs" />
     <Content Include="packages.config" />
