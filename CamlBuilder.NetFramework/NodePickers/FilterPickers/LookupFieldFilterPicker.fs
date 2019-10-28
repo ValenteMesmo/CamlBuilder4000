@@ -8,12 +8,17 @@ open System.Runtime.CompilerServices
 type LookupFieldFilterPickerExtensions =
 
     [<Extension>]
-    static member IsEqualTo(picker: LookupFieldFilterPicker, value : int) =         
-
+    static member IsNull(picker: LookupFieldFilterPicker) =
         new LogicalOperatorPicker(
-            createEqualNode(
-                picker.fieldDefinition 
-                + createLookupValueNode(value)
-            )
+            picker.fieldDefinition
+            |> createIsNullNode
+            |> picker.Build
+        )
+
+    [<Extension>]
+    static member IsEqualTo(picker: LookupFieldFilterPicker, value : int) =
+        new LogicalOperatorPicker(
+            picker.fieldDefinition + createLookupValueNode(value)
+            |> createEqualNode
             |> picker.Build
         )

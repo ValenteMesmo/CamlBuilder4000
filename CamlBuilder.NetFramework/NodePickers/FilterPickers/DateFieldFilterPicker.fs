@@ -8,15 +8,17 @@ open System.Runtime.CompilerServices
 type DateFieldFilterPickerExtensions =
 
     [<Extension>]
-    static member IsLessThan (picker: DateFieldFilterPicker, value : System.DateTime) = 
-        LogicalOperatorPicker(                 
-            picker.Build                     
-                <| createLessThanNode(picker.fieldDefinition + createDateOnlyValue(value))
+    static member IsNull(picker: DateFieldFilterPicker) =
+        new LogicalOperatorPicker(
+            picker.fieldDefinition
+            |> createIsNullNode
+            |> picker.Build
         )
 
     [<Extension>]
-    static member IsNull(picker: DateFieldFilterPicker) =
-        LogicalOperatorPicker(                 
-            picker.Build
-                <| createIsNullNode picker.fieldDefinition
+    static member IsLessThan (picker: DateFieldFilterPicker, value : System.DateTime) = 
+        LogicalOperatorPicker(
+            picker.fieldDefinition + createDateOnlyValue(value)
+            |> createLessThanNode
+            |> picker.Build
         )
