@@ -38,6 +38,9 @@ module internal XmlNodeFactories =
     let createIsNullNode content =
         createCamlNode "IsNull" content
 
+    let createIsNotNullNode content =
+        createCamlNode "IsNotNull" content
+
     let createValuesNode content =
         createCamlNode "Values" content
 

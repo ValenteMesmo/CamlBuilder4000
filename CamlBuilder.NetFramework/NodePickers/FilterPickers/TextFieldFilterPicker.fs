@@ -14,6 +14,13 @@ type TextFieldFilterPickerExtensions =
         |> picker.Build
         |> LogicalOperatorPicker
 
+    [<Extension>]
+    static member IsNotNull(picker: TextFieldFilterPicker) =
+        picker.fieldDefinition
+        |> createIsNotNullNode
+        |> picker.Build
+        |> LogicalOperatorPicker
+
     [<Extension>]    
     static member IsEqualTo(picker: TextFieldFilterPicker, value : string) =
         picker.fieldDefinition + createTextValueNode(value)

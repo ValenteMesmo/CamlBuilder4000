@@ -15,6 +15,13 @@ type DateFieldFilterPickerExtensions =
         |> LogicalOperatorPicker
 
     [<Extension>]
+    static member IsNotNull(picker: DateFieldFilterPicker) =
+        picker.fieldDefinition
+        |> createIsNotNullNode
+        |> picker.Build
+        |> LogicalOperatorPicker
+
+    [<Extension>]
     static member IsLessThan (picker: DateFieldFilterPicker, value : System.DateTime) =
         picker.fieldDefinition + createDateOnlyValue(value)
         |> createLessThanNode

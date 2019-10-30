@@ -15,6 +15,13 @@ type LookupMultiFieldFilterPickerExtensions =
         |> LogicalOperatorPicker
 
     [<Extension>]
+    static member IsNotNull(picker: LookupMultiFieldFilterPicker) =
+        picker.fieldDefinition
+        |> createIsNotNullNode
+        |> picker.Build
+        |> LogicalOperatorPicker
+
+    [<Extension>]
     static member Contains(picker: LookupMultiFieldFilterPicker, value : int) =        
         picker.fieldDefinition + createLookupValueNode(value)
         |> createEqualNode
