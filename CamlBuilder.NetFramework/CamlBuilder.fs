@@ -13,4 +13,5 @@ open ValenteMesmo.CamlQueryBuilder.Internals
 [<AbstractClass; Sealed>]
 type CamlQuery private () =
     static member Where handler =
-        new WhereBuilder(handler)
+        handler
+        |> WhereBuilder

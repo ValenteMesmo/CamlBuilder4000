@@ -8,17 +8,21 @@ open System.Runtime.CompilerServices
 type FieldTypePickerExtensions =
 
     [<Extension>]
-    static member Text(picker: FieldTypePicker, fieldName: string) = 
-        new TextFieldFilterPicker(picker.Build(), createFieldRef fieldName)
+    static member Text(picker: FieldTypePicker, fieldName: string) =         
+        (picker.Build(), createFieldRef fieldName)
+        |> TextFieldFilterPicker 
 
     [<Extension>]
     static member LookupId(picker: FieldTypePicker, fieldName: string) = 
-        new LookupFieldFilterPicker(picker.Build(), createLookupIdFieldRef fieldName) 
+        (picker.Build(), createLookupIdFieldRef fieldName)
+        |> LookupFieldFilterPicker 
 
     [<Extension>]
-    static member LookupIdMulti(picker: FieldTypePicker, fieldName: string) = 
-        new LookupMultiFieldFilterPicker(picker.Build(), createLookupIdFieldRef fieldName) 
+    static member LookupIdMulti(picker: FieldTypePicker, fieldName: string) =
+        (picker.Build(), createLookupIdFieldRef fieldName)
+        |> LookupMultiFieldFilterPicker
 
     [<Extension>]
     static member Date(picker: FieldTypePicker, fieldName: string) = 
-        new DateFieldFilterPicker(picker.Build(), createFieldRef fieldName)
+        (picker.Build(), createFieldRef fieldName)
+        |> DateFieldFilterPicker

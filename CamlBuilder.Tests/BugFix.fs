@@ -74,7 +74,7 @@ module ``Bug fix`` =
                                                             .Contains(1)
                                                             .And(fun h -> h
                                                                             .Date("UltimoAlertaDePrazo")
-                                                                            .IsLessThan(new System.DateTime(1989, 04, 08))
+                                                                            .IsLessThan(System.DateTime(1989, 04, 08))
                                                                             .Or()
                                                                             .Date("UltimoAlertaDePrazo")
                                                                             .IsNull()

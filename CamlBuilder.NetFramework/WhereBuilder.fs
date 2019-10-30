@@ -11,7 +11,10 @@ open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 //    viewFields
 //    rowlimit
 type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>) =        
-    let whereContent = handler.Invoke(new FieldTypePicker(fun f -> f))
+    let whereContent = 
+        fun f -> f
+        |> FieldTypePicker
+        |> handler.Invoke 
     
     member this.Build() =
         whereContent.Build()
@@ -19,14 +22,16 @@ type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>)
         |> createQueryNode
         |> createViewNode
 
-    member this.RowLimit number =
-        new RowContentBuilder(
+    member this.RowLimit number =        
+        (
             whereContent.Build()
-                |> createWhereNode
-                |> createQueryNode
-            , number
+            |> createWhereNode
+            |> createQueryNode, number
         )
+        |> RowContentBuilder
+        
 
 and RowContentBuilder(parentBuild, number : int) =
     member this.Build() =
-        parentBuild + createRowLimitNode(number) |> createViewNode
+        parentBuild + createRowLimitNode(number)
+        |> createViewNode

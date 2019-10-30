@@ -8,17 +8,15 @@ open System.Runtime.CompilerServices
 type LookupMultiFieldFilterPickerExtensions =
 
     [<Extension>]
-    static member IsNull(picker: LookupMultiFieldFilterPicker) =
-        new LogicalOperatorPicker(
-            picker.fieldDefinition
-            |> createIsNullNode
-            |> picker.Build
-        )
+    static member IsNull(picker: LookupMultiFieldFilterPicker) =        
+        picker.fieldDefinition
+        |> createIsNullNode
+        |> picker.Build
+        |> LogicalOperatorPicker
 
     [<Extension>]
-    static member Contains(picker: LookupMultiFieldFilterPicker, value : int) =
-        new LogicalOperatorPicker(
-            picker.fieldDefinition + createLookupValueNode(value)
-            |> createEqualNode
-            |> picker.Build
-        )
+    static member Contains(picker: LookupMultiFieldFilterPicker, value : int) =        
+        picker.fieldDefinition + createLookupValueNode(value)
+        |> createEqualNode
+        |> picker.Build
+        |> LogicalOperatorPicker
