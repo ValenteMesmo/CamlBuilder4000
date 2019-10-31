@@ -27,3 +27,24 @@ type DateFieldFilterPickerExtensions =
         |> createLessThanNode
         |> picker.Build
         |> LogicalOperatorPicker
+
+    [<Extension>]
+    static member IsGreaterThan (picker: DateFieldFilterPicker, value : System.DateTime) =
+        picker.fieldDefinition + createDateOnlyValue(value)
+        |> createGreaterThanNode
+        |> picker.Build
+        |> LogicalOperatorPicker
+
+    [<Extension>]
+    static member IsEqualTo (picker: DateFieldFilterPicker, value : System.DateTime) =
+        picker.fieldDefinition + createDateOnlyValue(value)
+        |> createEqualNode
+        |> picker.Build
+        |> LogicalOperatorPicker
+
+    [<Extension>]
+    static member IsNotEqualTo (picker: DateFieldFilterPicker, value : System.DateTime) =
+        picker.fieldDefinition + createDateOnlyValue(value)
+        |> createNotEqualNode
+        |> picker.Build
+        |> LogicalOperatorPicker

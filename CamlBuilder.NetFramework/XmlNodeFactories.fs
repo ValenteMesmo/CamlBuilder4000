@@ -35,6 +35,9 @@ module internal XmlNodeFactories =
     let createLessThanNode content = 
         createCamlNode "Lt" content
 
+    let createGreaterThanNode content = 
+        createCamlNode "Gt" content        
+
     let createIsNullNode content =
         createCamlNode "IsNull" content
 

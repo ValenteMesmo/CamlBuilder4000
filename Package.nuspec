@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>ValenteMesmo.CamlBuilder</id>
-    <version>0.0.6</version>
+    <version>0.0.7</version>
     <title>CamlBuilder</title>
     <authors>ValenteMesmo</authors>
     <owners>ValenteMesmo</owners>
@@ -12,7 +12,9 @@
     <copyright></copyright>
     <tags>sharepoint caml query</tags>
     <dependencies>
-      <dependency id="FSharp.Core" version="4.7.0" />
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="FSharp.Core" version="4.7.0" />
+      </group>
     </dependencies>
   </metadata>
   <files>
