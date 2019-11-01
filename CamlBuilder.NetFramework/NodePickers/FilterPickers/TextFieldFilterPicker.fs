@@ -23,14 +23,16 @@ type TextFieldFilterPickerExtensions =
 
     [<Extension>]    
     static member IsEqualTo(picker: TextFieldFilterPicker, value : string) =
-        picker.fieldDefinition + createTextValueNode(value)
+        createTextValueNode(value)
+        |> concat picker.fieldDefinition
         |> createEqualNode
         |> picker.Build
         |> LogicalOperatorPicker
 
     [<Extension>]    
     static member IsNotEqualTo(picker: TextFieldFilterPicker, value : string) =
-        picker.fieldDefinition + createTextValueNode(value)
+        createTextValueNode(value)
+        |> concat picker.fieldDefinition
         |> createNotEqualNode
         |> picker.Build
         |> LogicalOperatorPicker
@@ -38,7 +40,8 @@ type TextFieldFilterPickerExtensions =
 
     [<Extension>]    
     static member Contains(picker: TextFieldFilterPicker, value : string) =
-        picker.fieldDefinition + createTextValueNode(value)
+        createTextValueNode(value)
+        |> concat picker.fieldDefinition
         |> createContainsNode
         |> picker.Build
         |> LogicalOperatorPicker

@@ -2,6 +2,9 @@
 
 module internal XmlNodeFactories =
 
+    let concat a b =
+        sprintf "%s%s" a b
+
     let createCamlNode nodeName nodeContent = 
         sprintf "<%s>%s</%s>" nodeName nodeContent nodeName 
 

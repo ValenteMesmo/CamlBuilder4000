@@ -23,7 +23,8 @@ type LookupMultiFieldFilterPickerExtensions =
 
     [<Extension>]
     static member Contains(picker: LookupMultiFieldFilterPicker, value : int) =        
-        picker.fieldDefinition + createLookupValueNode(value)
+        createLookupValueNode(value)
+        |> concat picker.fieldDefinition
         |> createEqualNode
         |> picker.Build
         |> LogicalOperatorPicker

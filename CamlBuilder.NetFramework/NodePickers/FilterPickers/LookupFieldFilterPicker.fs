@@ -22,8 +22,9 @@ type LookupFieldFilterPickerExtensions =
         |> LogicalOperatorPicker
 
     [<Extension>]
-    static member IsEqualTo(picker: LookupFieldFilterPicker, value : int) =        
-        picker.fieldDefinition + createLookupValueNode(value)
+    static member IsEqualTo(picker: LookupFieldFilterPicker, value : int) =
+        createLookupValueNode(value)
+        |> concat picker.fieldDefinition
         |> createEqualNode
         |> picker.Build
         |> LogicalOperatorPicker
