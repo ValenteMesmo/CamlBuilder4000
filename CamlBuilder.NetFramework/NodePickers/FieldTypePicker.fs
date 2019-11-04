@@ -26,3 +26,8 @@ type FieldTypePickerExtensions =
     static member Date(picker: FieldTypePicker, fieldName: string) = 
         (picker.Build(), createFieldRef fieldName)
         |> DateFieldFilterPicker
+
+    [<Extension>]
+    static member Bool(picker: FieldTypePicker, fieldName: string) = 
+        (picker.Build(), createFieldRef fieldName)
+        |> BoolFieldFilterPicker

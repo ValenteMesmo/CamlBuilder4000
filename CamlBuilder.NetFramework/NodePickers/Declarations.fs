@@ -21,3 +21,7 @@ type LookupMultiFieldFilterPicker internal (parentBuild : string -> string, fiel
 type DateFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
     member internal this.fieldDefinition = fieldDefinition
     member internal this.Build = parentBuild
+
+type BoolFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
+    member internal this.fieldDefinition = fieldDefinition
+    member internal this.Build = parentBuild

@@ -59,6 +59,12 @@ module internal XmlNodeFactories =
     let createLookupValueNode(value : int) =
         sprintf "<Value Type='Lookup'>%i</Value>" value
 
+    let createBoolValueNode(value: bool) =
+        if(value) then
+            "<Value Type='Boolean'>1</Value>"
+        else
+            "<Value Type='Boolean'>0</Value>"
+
     let createDateOnlyValue(value : System.DateTime) = 
         sprintf
             <| "<Value IncludeTimeValue='FALSE' Type='DateTime'>%s</Value>" 
