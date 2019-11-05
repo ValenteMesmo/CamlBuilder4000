@@ -8,7 +8,7 @@ module ``Bug fix`` =
     [<Fact>]
     let ``RowLimit after where`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Eq>\
@@ -35,7 +35,7 @@ module ``Bug fix`` =
     [<Fact>]
     let ``bug fix``() =
         let expeceted = 
-            "<View>\
+            "<View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <And>\
@@ -88,7 +88,7 @@ module ``Bug fix`` =
     [<Fact>]
     let ``Complex one``() =
         let expected =
-            "<View>\
+            "<View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <And>\

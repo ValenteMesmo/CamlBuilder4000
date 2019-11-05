@@ -8,7 +8,7 @@ module ``Text Filters`` =
     [<Fact>]
     let ``Is Equal to`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Eq>\
@@ -33,7 +33,7 @@ module ``Text Filters`` =
     [<Fact>]
     let ``Is Not Equal to`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Neq>\
@@ -58,7 +58,7 @@ module ``Text Filters`` =
     [<Fact>]
     let ``Contains`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Contains>\

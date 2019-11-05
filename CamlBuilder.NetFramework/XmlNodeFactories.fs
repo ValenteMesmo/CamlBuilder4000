@@ -9,7 +9,7 @@ module internal XmlNodeFactories =
         sprintf "<%s>%s</%s>" nodeName nodeContent nodeName 
 
     let createViewNode content = 
-        createCamlNode "View" content
+        sprintf "<View Scope='RecursiveAll'>%s</View>" content
 
     let createQueryNode content = 
         createCamlNode "Query" content

@@ -9,7 +9,7 @@ module ``Date Filters`` =
     [<Fact>]
     let ``Is Equal to`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Eq>\
@@ -34,7 +34,7 @@ module ``Date Filters`` =
     [<Fact>]
     let ``Is Not Equal to`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Neq>\

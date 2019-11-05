@@ -9,7 +9,7 @@ module ``Bool Filters`` =
     [<Fact>]
     let ``Is Equal to true`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Eq>\
@@ -35,7 +35,7 @@ module ``Bool Filters`` =
     [<Fact>]
     let ``Is Equal to false`` () =
         let expected ="\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Eq>\

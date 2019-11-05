@@ -8,7 +8,7 @@ module ``Logical conditions`` =
     [<Fact>]
     let ``times 0``() =
         let expected = "\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Eq>\
@@ -32,7 +32,7 @@ module ``Logical conditions`` =
     [<Fact>]
     let ``times 1``() =
         let expected = "\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <And>\
@@ -65,7 +65,7 @@ module ``Logical conditions`` =
     [<Fact>]
     let ``times 2``() =
         let expected = "\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <And>\
@@ -107,7 +107,7 @@ module ``Logical conditions`` =
     [<Fact>]
     let ``times 3``() =
         let expected = "\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Or>\
@@ -158,7 +158,7 @@ module ``Logical conditions`` =
     [<Fact>]
     let ``times 4``() =
         let expected = "\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Or>\
@@ -218,7 +218,7 @@ module ``Logical conditions`` =
     [<Fact>]
     let ``times 5``() =
         let expected = "\
-            <View>\
+            <View Scope='RecursiveAll'>\
                 <Query>\
                     <Where>\
                         <Or>\
