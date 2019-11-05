@@ -25,3 +25,7 @@ type DateFieldFilterPicker internal (parentBuild : string -> string, fieldDefini
 type BoolFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
     member internal this.fieldDefinition = fieldDefinition
     member internal this.Build = parentBuild
+
+type FileDirRefFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
+    member internal this.fieldDefinition = fieldDefinition
+    member internal this.Build = parentBuild

@@ -31,3 +31,8 @@ type FieldTypePickerExtensions =
     static member Bool(picker: FieldTypePicker, fieldName: string) = 
         (picker.Build(), createFieldRef fieldName)
         |> BoolFieldFilterPicker
+
+    [<Extension>]
+    static member FileDirRef(picker: FieldTypePicker) = 
+        (picker.Build(), createFieldRef "FileDirRef")
+        |> FileDirRefFilterPicker
