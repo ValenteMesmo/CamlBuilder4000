@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="Choice.fs" />
     <Compile Include="FileDirRef.fs" />
     <Compile Include="Boolean.fs" />
     <Compile Include="Lookup.fs" />

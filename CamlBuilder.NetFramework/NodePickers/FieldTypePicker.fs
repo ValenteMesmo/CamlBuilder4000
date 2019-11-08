@@ -10,12 +10,12 @@ type FieldTypePickerExtensions =
     [<Extension>]
     static member Text(picker: FieldTypePicker, fieldName: string) =         
         (picker.Build(), createFieldRef fieldName)
-        |> TextFieldFilterPicker 
+        |> TextFieldFilterPicker
 
     [<Extension>]
     static member LookupId(picker: FieldTypePicker, fieldName: string) = 
         (picker.Build(), createLookupIdFieldRef fieldName)
-        |> LookupFieldFilterPicker 
+        |> LookupFieldFilterPicker
 
     [<Extension>]
     static member LookupIdMulti(picker: FieldTypePicker, fieldName: string) =
@@ -36,3 +36,8 @@ type FieldTypePickerExtensions =
     static member FileDirRef(picker: FieldTypePicker) = 
         (picker.Build(), createFieldRef "FileDirRef")
         |> FileDirRefFilterPicker
+
+    [<Extension>]
+    static member Choice(picker: FieldTypePicker, fieldName: string) =         
+        (picker.Build(), createFieldRef fieldName)
+        |> ChoiceFieldFilterPicker
