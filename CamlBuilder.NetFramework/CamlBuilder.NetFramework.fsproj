@@ -53,6 +53,7 @@
     <Compile Include="NodePickers\FilterPickers\LookupMultiFieldFilterPicker.fs" />
     <Compile Include="NodePickers\FilterPickers\BoolFieldFilterPicker.fs" />
     <Compile Include="NodePickers\FilterPickers\FileDirRefFilterPicker.fs" />
+    <Compile Include="NodePickers\FilterPickers\UniqueIdFilterPicker.fs" />
     <Compile Include="WhereBuilder.fs" />
     <Compile Include="CamlBuilder.fs" />
     <Content Include="packages.config" />

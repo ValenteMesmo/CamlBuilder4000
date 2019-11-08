@@ -4,7 +4,6 @@ module ``FileDirRef Filters`` =
 
     open Xunit
     open ValenteMesmo.CamlQueryBuilder
-    open System
 
     [<Fact>]
     let ``Is Equal to`` () =

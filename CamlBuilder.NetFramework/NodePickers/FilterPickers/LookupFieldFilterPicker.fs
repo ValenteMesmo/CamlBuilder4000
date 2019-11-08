@@ -23,7 +23,7 @@ type LookupFieldFilterPickerExtensions =
 
     [<Extension>]
     static member IsEqualTo(picker: LookupFieldFilterPicker, value : int) =
-        createLookupValueNode(value)
+        createLookupIntValueNode(value)
         |> concat picker.fieldDefinition
         |> createEqualNode
         |> picker.Build

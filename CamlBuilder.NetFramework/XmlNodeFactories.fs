@@ -59,8 +59,14 @@ module internal XmlNodeFactories =
     let createPathValueNode(content : string) =
         sprintf "<Value Type='Text'>%s</Value>" content
 
-    let createLookupValueNode(value : int) =
+    let createLookupIntValueNode(value : int) =
         sprintf "<Value Type='Lookup'>%i</Value>" value
+
+    let createLookupGuidValueNode(value : System.Guid) =
+        sprintf "<Value Type='Lookup'>%A</Value>" value
+
+    let createLookupStringValueNode(value : string) =
+        sprintf "<Value Type='Lookup'>%s</Value>" value
 
     let createBoolValueNode(value: bool) =
         if(value) then

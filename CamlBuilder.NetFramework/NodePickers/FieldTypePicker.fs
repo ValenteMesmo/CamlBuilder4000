@@ -36,3 +36,8 @@ type FieldTypePickerExtensions =
     static member FileDirRef(picker: FieldTypePicker) = 
         (picker.Build(), createFieldRef "FileDirRef")
         |> FileDirRefFilterPicker
+
+    [<Extension>]
+    static member UniqueId(picker: FieldTypePicker) = 
+        (picker.Build(), createFieldRef "UniqueId")
+        |> UniqueIdFilterPicker
