@@ -14,4 +14,8 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: |
+        git submodule update --init --recursive
+        dotnet restore CamlBuilder4000.sln
+        msbuild "CamlBuilder4000.sln" /p:Configuration=Release /verbosity:minimal
+        dotnet test /CamlBuilder.Tests/CamlBuilder.Tests.fsproj
