@@ -37,3 +37,7 @@ type ChoiceFieldFilterPicker internal (parentBuild : string -> string, fieldDefi
 type UniqueIdFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =        
     member internal this.fieldDefinition = fieldDefinition
     member internal this.Build = parentBuild
+
+type NumberFieldFilterPicker internal (parentBuild : string -> string, fieldDefinition : string) =
+    member internal this.Build(a) = parentBuild a
+    member internal this.fieldDefinition = fieldDefinition 

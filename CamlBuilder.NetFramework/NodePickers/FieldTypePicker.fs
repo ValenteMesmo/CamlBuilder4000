@@ -46,3 +46,8 @@ type FieldTypePickerExtensions =
     static member UniqueId(picker: FieldTypePicker) = 
         (picker.Build(), createFieldRef "UniqueId")
         |> UniqueIdFilterPicker
+
+    [<Extension>]
+    static member Number(picker: FieldTypePicker, fieldName: string) = 
+        (picker.Build(), createFieldRef fieldName)
+        |> NumberFieldFilterPicker

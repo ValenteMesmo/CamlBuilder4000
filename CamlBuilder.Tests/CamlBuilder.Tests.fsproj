@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Compile Include="Choice.fs" />
+    <Compile Include="Number.fs" />
     <Compile Include="UniqueId.fs" />
     <Compile Include="FileDirRef.fs" />
     <Compile Include="Boolean.fs" />

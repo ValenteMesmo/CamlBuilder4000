@@ -56,6 +56,15 @@ module internal XmlNodeFactories =
     let createTextValueNode(content : string) =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content
 
+    let createIntValueNode(content: int) =
+        sprintf "<Value Type='Number'>%i</Value>" content
+
+    let createFloatValueNode(content: float) =
+        sprintf "<Value Type='Number'>%f</Value>" content
+
+    let createDecimalValueNode(content: decimal) =
+        sprintf "<Value Type='Number'>%f</Value>" content
+
     let createPathValueNode(content : string) =
         sprintf "<Value Type='Text'>%s</Value>" content
 
