@@ -8,12 +8,8 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Nuget Restore 
-    - uses: nuget/setup-nuget@v1
-      with:
-        nuget-api-key: ${{ secrets.NuGetAPIKey }}
-        nuget-version: '5.x'
+    - uses: actions/checkout@v1    
+    - uses: nuget/setup-nuget@v1      
     - run: nuget restore
     - name: Build DotNET45
       run: |
