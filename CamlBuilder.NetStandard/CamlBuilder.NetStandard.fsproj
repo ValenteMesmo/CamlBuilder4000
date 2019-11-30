@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\CamlBuilder.NetFramework\XmlNodeFactories.fs" Link="XmlNodeFactories.fs" />
+    <Folder Include="NodePickers\" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\Declarations.fs" Link="NodePickers\Declarations.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\LogicalOperatorPicker.fs" Link="NodePickers\LogicalOperatorPicker.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FieldTypePicker.fs" Link="NodePickers\FieldTypePicker.fs" />
+    <Folder Include="NodePickers\FilterPickers\" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\Bool.fs" Link="NodePickers\FilterPickers\Bool.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\Choice.fs" Link="NodePickers\FilterPickers\Choice.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\Date.fs" Link="NodePickers\FilterPickers\Date.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\FileDirRef.fs" Link="NodePickers\FilterPickers\FileDirRef.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\Lookup.fs" Link="NodePickers\FilterPickers\Lookup.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\LookupMulti.fs" Link="NodePickers\FilterPickers\LookupMulti.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\NumberDecimal.fs" Link="NodePickers\FilterPickers\NumberDecimal.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\NumberFloat.fs" Link="NodePickers\FilterPickers\NumberFloat.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\NumberInt.fs" Link="NodePickers\FilterPickers\NumberInt.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\Text.fs" Link="NodePickers\FilterPickers\Text.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\UniqueId.fs" Link="NodePickers\FilterPickers\UniqueId.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\WhereBuilder.fs" Link="WhereBuilder.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\CamlBuilder.fs" Link="CamlBuilder.fs" />
+  </ItemGroup>
+
+  <ItemGroup />
+
+</Project>
