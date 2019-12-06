@@ -6,6 +6,140 @@ module ``Bug fix`` =
     open ValenteMesmo.CamlQueryBuilder
 
     [<Fact>]
+    let ``Pru`` () =
+        let expected ="\
+            <View Scope='RecursiveAll'>\
+                <Query>\
+                    <Where>\
+                        <And>\
+                            <And>\
+                                <Eq>\
+                                    <FieldRef Name='Area' LookupId='TRUE'/>\
+                                    <Value Type='Lookup'>1</Value>\
+                                </Eq>\
+                                <Eq>\
+                                    <FieldRef Name='EmailAlertaEnviado'/>\
+                                    <Value Type='Boolean'>0</Value>\
+                                </Eq>\
+                            </And>\
+                            <Or>\
+                                <Or>\
+                                    <Or>\
+                                        <Or>\
+                                            <Or>\
+                                                <Or>\
+                                                    <Or>\
+                                                        <Or>\
+                                                            <Or>\
+                                                                <Eq>\
+                                                                    <FieldRef Name='Status'/>\
+                                                                    <Value Type='Text'>\
+                                                                        <![CDATA[Pendência em DPI]]>\
+                                                                    </Value>\
+                                                                </Eq>\
+                                                                <Eq>\
+                                                                    <FieldRef Name='Status'/>\
+                                                                    <Value Type='Text'>\
+                                                                        <![CDATA[Pendência na Aplicação de Marca]]>\
+                                                                    </Value>\
+                                                                </Eq>\
+                                                            </Or>\
+                                                            <Eq>\
+                                                                <FieldRef Name='Status'/>\
+                                                                <Value Type='Text'>\
+                                                                    <![CDATA[Pendência Jurídica]]>\
+                                                                </Value>\
+                                                            </Eq>\
+                                                        </Or>\
+                                                        <Eq>\
+                                                            <FieldRef Name='Status'/>\
+                                                            <Value Type='Text'>\
+                                                                <![CDATA[Pendência em Compliance]]>\
+                                                            </Value>\
+                                                        </Eq>\
+                                                    </Or>\
+                                                    <Eq>\
+                                                        <FieldRef Name='Status'/>\
+                                                        <Value Type='Text'>\
+                                                            <![CDATA[Pendência na Revisão de Texto]]>\
+                                                        </Value>\
+                                                    </Eq>\
+                                                </Or>\
+                                                <Eq>\
+                                                    <FieldRef Name='Status'/>\
+                                                    <Value Type='Text'>\
+                                                        <![CDATA[Análise das Alterações do(s) Aprovador(es)]]>\
+                                                    </Value>\
+                                                </Eq>\
+                                            </Or>\
+                                            <Eq>\
+                                                <FieldRef Name='Status'/>\
+                                                <Value Type='Text'>\
+                                                    <![CDATA[Pendência na Produção]]>\
+                                                </Value>\
+                                            </Eq>\
+                                        </Or>\
+                                        <Eq>\
+                                            <FieldRef Name='Status'/>\
+                                            <Value Type='Text'>\
+                                                <![CDATA[Aprovação da Programação Visual]]>\
+                                            </Value>\
+                                        </Eq>\
+                                    </Or>\
+                                    <Eq>\
+                                        <FieldRef Name='Status'/>\
+                                        <Value Type='Text'>\
+                                            <![CDATA[Aprovação do Documento]]>\
+                                        </Value>\
+                                    </Eq>\
+                                </Or>\
+                                <Eq>\
+                                    <FieldRef Name='Status'/>\
+                                    <Value Type='Text'>\
+                                        <![CDATA[Pendência na Publicação]]>\
+                                    </Value>\
+                                </Eq>\
+                            </Or>\
+                        </And>\
+                    </Where>\
+                </Query>\
+                <RowLimit Paged='False'>100</RowLimit>\
+            </View>"
+
+        let actual = 
+            CamlQuery
+                .Where(
+                    fun f-> f
+                                .LookupId("Area").IsEqualTo(1)
+                                .And()
+                                .Bool("EmailAlertaEnviado").IsFalse()
+                                .And(fun f -> 
+                                    f.Text("Status").IsEqualTo("Pendência em DPI")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Pendência na Aplicação de Marca")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Pendência Jurídica")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Pendência em Compliance")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Pendência na Revisão de Texto")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Análise das Alterações do(s) Aprovador(es)")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Pendência na Produção")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Aprovação da Programação Visual")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Aprovação do Documento")
+                                        .Or()
+                                        .Text("Status").IsEqualTo("Pendência na Publicação"))
+                )
+                .RowLimit(100)
+                .Build()
+                            
+        Assert.Equal(expected, actual)
+
+    [<Fact>]
     let ``RowLimit after where`` () =
         let expected ="\
             <View Scope='RecursiveAll'>\
@@ -41,7 +175,7 @@ module ``Bug fix`` =
                         <And>\
                             <Eq>\
                                 <FieldRef Name='Status'/>\
-                                <Value Type='Text'><![CDATA[Aprova��o do Documento]]></Value>\
+                                <Value Type='Text'><![CDATA[Aprovação do Documento]]></Value>\
                             </Eq>\
                             <And>\
                                 <Eq>\
@@ -68,7 +202,7 @@ module ``Bug fix`` =
         let actual = CamlQuery
                         .Where(fun f -> f
                                             .Text("Status")
-                                            .IsEqualTo("Aprova��o do Documento")
+                                            .IsEqualTo("Aprovação do Documento")
                                             .And(fun g -> g
                                                             .LookupIdMulti("Area")
                                                             .Contains(1)
