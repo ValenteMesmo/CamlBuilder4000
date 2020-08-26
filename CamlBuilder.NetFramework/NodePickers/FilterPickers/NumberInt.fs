@@ -38,7 +38,7 @@ type IntFieldFilterPickerExtensions =
         |> LogicalOperatorPicker
 
     [<Extension>]
-    static member IsGreaterThan(picker: DateFieldFilterPicker, value : int) =
+    static member IsGreaterThan(picker: NumberFieldFilterPicker, value : int) =
         createIntValueNode(value)
         |> concat picker.fieldDefinition
         |> createGreaterThanNode
@@ -46,7 +46,7 @@ type IntFieldFilterPickerExtensions =
         |> LogicalOperatorPicker
 
     [<Extension>]
-    static member IsLessThan(picker: DateFieldFilterPicker, value : int) =
+    static member IsLessThan(picker: NumberFieldFilterPicker, value : int) =
         createIntValueNode(value)
         |> concat picker.fieldDefinition
         |> createLessThanNode

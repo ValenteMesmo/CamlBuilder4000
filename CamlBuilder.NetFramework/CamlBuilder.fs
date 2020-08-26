@@ -10,6 +10,7 @@ open ValenteMesmo.CamlQueryBuilder.Internals
 //CAML query to check if user is member of a specific group
 //  using Membership
 
+//TODO: remove view and query
 [<AbstractClass; Sealed>]
 type CamlQuery private () =
     static member Where handler =
