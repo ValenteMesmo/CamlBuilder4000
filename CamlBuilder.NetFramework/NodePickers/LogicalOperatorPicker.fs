@@ -25,18 +25,14 @@ type LogicalOperatorPickerExtensions =
             FieldTypePicker(sprintf "%s")
             |> handler.Invoke
 
-        picker.Build()
-        |> createAndNode
-        <| result.Build()
+        picker.Build() |> createAndNode <| result.Build()
         |> LogicalOperatorPicker
 
     [<Extension>]  
     static member Or(picker: LogicalOperatorPicker, handler : System.Func<FieldTypePicker, LogicalOperatorPicker>) =
         let result =
-            handler.Invoke
-            <| FieldTypePicker(sprintf "%s")
+            FieldTypePicker(sprintf "%s") 
+            |> handler.Invoke
 
-        picker.Build() 
-        |> createOrNode 
-        <| result.Build()
+        picker.Build() |> createOrNode <| result.Build()         
         |> LogicalOperatorPicker
