@@ -14,4 +14,4 @@ jobs:
     - name: Build DotNET45
       run: |
            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"	
-           .\MSBuild.exe $Env:GITHUB_WORKSPACE\
+           .\MSBuild.exe $Env:GITHUB_WORKSPACE\ /t:Build /p:Configuration=Release
