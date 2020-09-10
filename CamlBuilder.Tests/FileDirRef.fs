@@ -20,7 +20,7 @@ module ``FileDirRef Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .FileDirRef()

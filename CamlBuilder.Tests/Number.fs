@@ -20,7 +20,7 @@ module ``Number Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Number("campo")

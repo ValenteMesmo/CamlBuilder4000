@@ -20,7 +20,7 @@ module ``UniqueId Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .UniqueId()
@@ -45,7 +45,7 @@ module ``UniqueId Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .UniqueId()

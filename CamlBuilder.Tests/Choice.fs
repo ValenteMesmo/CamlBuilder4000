@@ -21,7 +21,7 @@ module ``Choice Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Choice("campo")

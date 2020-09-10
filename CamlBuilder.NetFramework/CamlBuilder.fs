@@ -12,7 +12,7 @@ open ValenteMesmo.CamlQueryBuilder.Internals
 
 //TODO: remove view and query
 [<AbstractClass; Sealed>]
-type CamlQuery private () =
+type CamlBuilder private () =
     static member Where handler =
         handler
         |> WhereBuilder

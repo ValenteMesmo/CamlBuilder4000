@@ -20,7 +20,7 @@ module ``Lookup Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .LookupId("campo")
@@ -45,7 +45,7 @@ module ``Lookup Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Text("campo")
@@ -70,7 +70,7 @@ module ``Lookup Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Text("Title")

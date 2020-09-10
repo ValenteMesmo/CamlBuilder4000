@@ -21,7 +21,7 @@ module ``Bool Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Bool("campo")
@@ -47,7 +47,7 @@ module ``Bool Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Bool("campo")

@@ -20,7 +20,7 @@ module ``Logical conditions`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(fun f-> f
                                 .Text("campo0")
                                 .IsEqualTo("valor0")
@@ -50,7 +50,7 @@ module ``Logical conditions`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(fun f-> f
                                 .Text("campo0")
                                 .IsEqualTo("valor0")
@@ -89,7 +89,7 @@ module ``Logical conditions`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(fun f-> f
                                 .Text("campo0")
                                 .IsEqualTo("valor0")
@@ -137,7 +137,7 @@ module ``Logical conditions`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(fun f-> f
                                 .Text("campo0")
                                 .IsEqualTo("valor0")
@@ -194,7 +194,7 @@ module ``Logical conditions`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(fun f-> f
                                 .Text("campo0")
                                 .IsEqualTo("valor0")
@@ -260,7 +260,7 @@ module ``Logical conditions`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(fun f-> f
                                 .Text("campo0")
                                 .IsEqualTo("valor0")

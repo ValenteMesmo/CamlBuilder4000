@@ -107,7 +107,7 @@ module ``Bug fix`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .LookupId("Area").IsEqualTo(1)
@@ -155,7 +155,7 @@ module ``Bug fix`` =
             </View>"
 
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Text("campo")
@@ -199,7 +199,7 @@ module ``Bug fix`` =
                 </Query>\
             </View>"
 
-        let actual = CamlQuery
+        let actual = CamlBuilder
                         .Where(fun f -> f
                                             .Text("Status")
                                             .IsEqualTo("Aprovação do Documento")
@@ -269,7 +269,7 @@ module ``Bug fix`` =
                 </Query>\
             </View>"
 
-        let actual = CamlQuery
+        let actual = CamlBuilder
                         .Where(fun f-> f
                                         .LookupIdMulti("Area").Contains(2)
                                         .And(fun q -> q

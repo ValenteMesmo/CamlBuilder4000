@@ -21,7 +21,7 @@ module ``Date Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Date("campo")
@@ -46,7 +46,7 @@ module ``Date Filters`` =
             </View>"
             
         let actual = 
-            CamlQuery
+            CamlBuilder
                 .Where(
                     fun f-> f
                                 .Date("campo")
