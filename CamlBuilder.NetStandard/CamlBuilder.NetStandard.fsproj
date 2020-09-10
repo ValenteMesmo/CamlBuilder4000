@@ -23,6 +23,7 @@
     <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\NumberFloat.fs" Link="NodePickers\FilterPickers\NumberFloat.fs" />
     <Compile Include="..\CamlBuilder.NetFramework\NodePickers\FilterPickers\NumberDecimal.fs" Link="NodePickers\FilterPickers\NumberDecimal.fs" />
     <Compile Include="..\CamlBuilder.NetFramework\WhereBuilder.fs" Link="WhereBuilder.fs" />
+    <Compile Include="..\CamlBuilder.NetFramework\OrderByBuilder.fs" Link="OrderByBuilder.fs" />
     <Compile Include="..\CamlBuilder.NetFramework\CamlBuilder.fs" Link="CamlBuilder.fs" />
   </ItemGroup>
 

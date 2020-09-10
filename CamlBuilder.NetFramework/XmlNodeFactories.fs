@@ -17,6 +17,16 @@ module internal XmlNodeFactories =
     let createWhereNode content = 
         createCamlNode "Where" content
 
+    let createOrderByNode fieldname =
+        sprintf "<OrderBy>\
+                    <FieldRef Name='%s' Ascending='TRUE' />\
+                </OrderBy>" fieldname
+
+    let createOrderByDescNode fieldname =
+        sprintf "<OrderBy>\
+                    <FieldRef Name='%s' Ascending='False' />\
+                </OrderBy>" fieldname
+
     let createAndNode a b =
         createCamlNode "And" (a + b)
 
@@ -51,7 +61,7 @@ module internal XmlNodeFactories =
         createCamlNode "Values" content
 
     let createRowLimitNode(content : int) = 
-        sprintf "<RowLimit Paged='False'>%i</RowLimit>" content
+        sprintf "<RowLimit>%i</RowLimit>" content
 
     let createTextValueNode(content : string) =
         sprintf "<Value Type='Text'><![CDATA[%s]]></Value>" content

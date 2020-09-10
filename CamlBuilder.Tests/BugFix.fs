@@ -103,7 +103,7 @@ module ``Bug fix`` =
                         </And>\
                     </Where>\
                 </Query>\
-                <RowLimit Paged='False'>100</RowLimit>\
+                <RowLimit>100</RowLimit>\
             </View>"
 
         let actual = 
@@ -140,6 +140,20 @@ module ``Bug fix`` =
         Assert.Equal(expected, actual)
 
     [<Fact>]
+    let ``Fixing rowlimit and adding orderby`` () =
+        let expected = "\
+            <View Scope='RecursiveAll'>\
+                <Query>\
+                    <OrderBy>\
+                        <FieldRef Name='ID' Ascending='False' />\
+                    </OrderBy>\
+                </Query>\
+            <RowLimit>1000</RowLimit>\
+            </View>"
+        let actual = CamlBuilder.OrderByDesc("ID").RowLimit(1000).Build();
+        Assert.Equal(expected, actual)
+
+    [<Fact>]
     let ``RowLimit after where`` () =
         let expected ="\
             <View Scope='RecursiveAll'>\
@@ -151,7 +165,7 @@ module ``Bug fix`` =
                         </Eq>\
                     </Where>\
                 </Query>\
-                <RowLimit Paged='False'>100</RowLimit>\
+                <RowLimit>100</RowLimit>\
             </View>"
 
         let actual = 

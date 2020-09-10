@@ -59,6 +59,7 @@
     <Compile Include="NodePickers\FilterPickers\NumberFloat.fs" />
     <Compile Include="NodePickers\FilterPickers\NumberDecimal.fs" />
     <Compile Include="WhereBuilder.fs" />
+    <Compile Include="OrderByBuilder.fs" />
     <Compile Include="CamlBuilder.fs" />
     <Content Include="packages.config" />
   </ItemGroup>

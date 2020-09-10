@@ -16,3 +16,11 @@ type CamlBuilder private () =
     static member Where handler =
         handler
         |> WhereBuilder
+
+    static member OrderBy handler =
+        handler
+        |> OrderByBuilder
+
+    static member OrderByDesc handler =
+        handler
+        |> OrderByDescBuilder
