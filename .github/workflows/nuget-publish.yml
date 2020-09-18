@@ -29,4 +29,4 @@ jobs:
           nuget-api-key: ${{secrets.NUGET_KEY}} 
 
       - name: Push generated package to GitHub registry
-        run: nuget push ./CamlBuilder/out/*.nupkg --skip-duplicate --no-symbols true
+        run: dotnet nuget push ./CamlBuilder/out/*.nupkg --api-key ${{secrets.NUGET_KEY}} --skip-duplicate
