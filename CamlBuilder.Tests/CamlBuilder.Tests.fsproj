@@ -31,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CamlBuilder.NetStandard\CamlBuilder.NetStandard.fsproj" />
+    <ProjectReference Include="..\CamlBuilder\CamlBuilder.fsproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -6,15 +6,12 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{73784C42-6EF3-4FDB-82CD-FCE3604E28EA}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
-		Package.nuspec = Package.nuspec
 		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CamlBuilder.Tests", "CamlBuilder.Tests\CamlBuilder.Tests.fsproj", "{5F2C33C0-E68B-4B67-9C52-D811EE7E9D12}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CamlBuilder.NetFramework", "CamlBuilder.NetFramework\CamlBuilder.NetFramework.fsproj", "{13DD5ECE-CB43-4316-BDB1-5B27890D3A37}"
-EndProject
-Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CamlBuilder.NetStandard", "CamlBuilder.NetStandard\CamlBuilder.NetStandard.fsproj", "{7BD532D0-BA3C-4F7D-BED6-B52721AD7C6D}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CamlBuilder", "CamlBuilder\CamlBuilder.fsproj", "{141FC084-9ED1-4EFD-8BEE-B8E71C780986}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +23,10 @@ Global
 		{5F2C33C0-E68B-4B67-9C52-D811EE7E9D12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F2C33C0-E68B-4B67-9C52-D811EE7E9D12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F2C33C0-E68B-4B67-9C52-D811EE7E9D12}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13DD5ECE-CB43-4316-BDB1-5B27890D3A37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13DD5ECE-CB43-4316-BDB1-5B27890D3A37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13DD5ECE-CB43-4316-BDB1-5B27890D3A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13DD5ECE-CB43-4316-BDB1-5B27890D3A37}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7BD532D0-BA3C-4F7D-BED6-B52721AD7C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7BD532D0-BA3C-4F7D-BED6-B52721AD7C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7BD532D0-BA3C-4F7D-BED6-B52721AD7C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7BD532D0-BA3C-4F7D-BED6-B52721AD7C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{141FC084-9ED1-4EFD-8BEE-B8E71C780986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{141FC084-9ED1-4EFD-8BEE-B8E71C780986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{141FC084-9ED1-4EFD-8BEE-B8E71C780986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{141FC084-9ED1-4EFD-8BEE-B8E71C780986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
