@@ -5,7 +5,10 @@
     <PackageId>ValenteMesmo.CamlBuilder</PackageId>
     <Version>3.0.0</Version>
     <Authors>ValenteMesmo</Authors>
-    <Description>Create caml query xmls for sharepoint with ease</Description>
+    <Description>Create caml query xmls for sharepoint with ease
+```C#
+CamlBuilder.Where(f-&gt; f.Number("Age").IsGreaterThan(18)).Build()
+```</Description>
     <PackageProjectUrl>https://github.com/ValenteMesmo/ValenteMesmo.CamlBuilder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ValenteMesmo/ValenteMesmo.CamlBuilder</RepositoryUrl>
     <PackageTags>sharepoint caml query</PackageTags>
