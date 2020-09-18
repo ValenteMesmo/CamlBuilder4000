@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>ValenteMesmo.CamlBuilder</PackageId>
+    <Version>2.0.1</Version>
+    <Authors>ValenteMesmo</Authors>
+    <Description>Create caml query xmls for sharepoint with ease</Description>
+    <PackageProjectUrl>https://github.com/ValenteMesmo/ValenteMesmo.CamlBuilder</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ValenteMesmo/ValenteMesmo.CamlBuilder</RepositoryUrl>
+    <PackageTags>sharepoint caml query</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="XmlNodeFactories.fs" />
+    <Compile Include="NodePickers\Declarations.fs" />
+    <Compile Include="NodePickers\LogicalOperatorPicker.fs" />
+    <Compile Include="NodePickers\FieldTypePicker.fs" />
+    <Compile Include="NodePickers\FilterPickers\Bool.fs" />
+    <Compile Include="NodePickers\FilterPickers\Choice.fs" />
+    <Compile Include="NodePickers\FilterPickers\Date.fs" />
+    <Compile Include="NodePickers\FilterPickers\FileDirRef.fs" />
+    <Compile Include="NodePickers\FilterPickers\Lookup.fs" />
+    <Compile Include="NodePickers\FilterPickers\LookupMulti.fs" />
+    <Compile Include="NodePickers\FilterPickers\NumberDecimal.fs" />
+    <Compile Include="NodePickers\FilterPickers\NumberFloat.fs" />
+    <Compile Include="NodePickers\FilterPickers\NumberInt.fs" />
+    <Compile Include="NodePickers\FilterPickers\Text.fs" />
+    <Compile Include="NodePickers\FilterPickers\UniqueId.fs" />
+    <Compile Include="WhereBuilder.fs" />
+    <Compile Include="OrderByBuilder.fs" />
+    <Compile Include="CamlBuilder.fs" />
+  </ItemGroup>
+
+</Project>
