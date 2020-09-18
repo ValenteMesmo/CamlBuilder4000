@@ -9,16 +9,26 @@ on:
     branches:
       - master
 
-jobs:  
+jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v2
+    runs-on: ubuntu-18.04
+    name: Update NuGet package
+    steps:
 
-      - name: Publish NuGet
-        uses: brandedoutcast/publish-nuget@v2.5.5
+      - name: Checkout repository
+        uses: actions/checkout@v1
+
+      - name: Setup .NET Core @ Latest
+        uses: actions/setup-dotnet@v1
         with:
-          # Filepath of the project to be packaged, relative to root of repository
-          PROJECT_FILE_PATH: CamlBuilder          
-          # API key to authenticate with NuGet server
-          NUGET_KEY: ${{secrets.NUGET_KEY}}
+          source-url: https://api.nuget.org/v3/index.json
+        env:
+          NUGET_AUTH_TOKEN: ${{secrets.NUGET_KEY}}     
+
+      - name: Build solution and generate NuGet package
+        run: |  
+          cd CamlBuilder
+          dotnet pack -c Release -o out  
+
+      - name: Push generated package to GitHub registry
+        run: dotnet nuget push ./CamlBuilder/out/*.nupkg --skip-duplicate --no-symbols true
