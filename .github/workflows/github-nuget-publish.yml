@@ -12,7 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
-    name: Update NuGet package
+    name: Update github NuGet package
     steps:
 
       - name: Checkout repository
