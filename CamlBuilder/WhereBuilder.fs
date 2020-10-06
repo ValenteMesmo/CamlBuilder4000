@@ -2,6 +2,7 @@
 
 open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
 open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
+open RowContentBuilderModule
 
 type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>) =        
     let whereContent = 
@@ -19,12 +20,13 @@ type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>)
         (
             whereContent.Build()
             |> createWhereNode
-            |> createQueryNode, number
+            |> createQueryNode
+            , number
         )
         |> RowContentBuilder
-        
-
-and RowContentBuilder(parentBuild, number : int) =
-    member this.Build() =
-        parentBuild |> concat <| createRowLimitNode(number)
-        |> createViewNode
+    
+    member this.OrderBy fieldName =
+        OrderByBuilder (whereContent.Build() |> createWhereNode, fieldName)
+    
+    member this.OrderByDesc fieldName =
+        OrderByBuilder (whereContent.Build() |> createWhereNode, fieldName)

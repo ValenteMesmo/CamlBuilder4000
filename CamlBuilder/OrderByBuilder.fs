@@ -1,40 +1,32 @@
 ﻿namespace ValenteMesmo.CamlQueryBuilder.Internals
 
 open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
-open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
+open RowContentBuilderModule
 
-type OrderByBuilder(fieldName) =    
+type OrderByBuilder(parentBuild, fieldName) =
     member this.Build() =
-        fieldName
-        |> createOrderByNode
+        parentBuild |> concat <| createOrderByNode(fieldName)
         |> createQueryNode
         |> createViewNode
 
     member this.RowLimit number =        
         (
-            fieldName
-            |> createOrderByNode
-            |> createQueryNode, number
+            parentBuild |> concat <| createOrderByNode(fieldName)
+            |> createQueryNode
+            , number
         )
         |> RowContentBuilder
 
-and OrderByDescBuilder(fieldName) =    
+and OrderByDescBuilder(parentBuild, fieldName) =    
     member this.Build() =
-        fieldName
-        |> createOrderByDescNode
+        parentBuild |> concat <| createOrderByDescNode(fieldName)
         |> createQueryNode
         |> createViewNode
 
     member this.RowLimit number =        
         (
-            fieldName
-            |> createOrderByDescNode
-            |> createQueryNode, number
+            parentBuild |> concat <| createOrderByDescNode(fieldName)
+            |> createQueryNode
+            , number
         )
         |> RowContentBuilder
-        
-
-//and RowContentBuilder(parentBuild, number : int) =
-//    member this.Build() =
-//        parentBuild |> concat <| createRowLimitNode(number)
-//        |> createViewNode

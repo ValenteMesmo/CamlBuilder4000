@@ -1,26 +1,20 @@
 ﻿namespace ValenteMesmo.CamlQueryBuilder
 
 open ValenteMesmo.CamlQueryBuilder.Internals
-//where builder
-//orderby
 //viewfields
-//row limit
 //groupby
 
 //CAML query to check if user is member of a specific group
 //  using Membership
 
-//TODO: remove view and query
 [<AbstractClass; Sealed>]
 type CamlBuilder private () =
     static member Where handler =
         handler
         |> WhereBuilder
 
-    static member OrderBy handler =
-        handler
-        |> OrderByBuilder
+    static member OrderBy fieldName =
+        OrderByDescBuilder("", fieldName)
 
-    static member OrderByDesc handler =
-        handler
-        |> OrderByDescBuilder
+    static member OrderByDesc fieldName =
+        OrderByDescBuilder("", fieldName)

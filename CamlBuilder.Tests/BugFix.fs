@@ -150,7 +150,38 @@ module ``Bug fix`` =
                 </Query>\
             <RowLimit>1000</RowLimit>\
             </View>"
-        let actual = CamlBuilder.OrderByDesc("ID").RowLimit(1000).Build();
+        let actual = 
+            CamlBuilder
+                        .OrderByDesc("ID")
+                        .RowLimit(1000)
+                        .Build();
+        Assert.Equal(expected, actual)
+
+    [<Fact>]
+    let ``Orderby`` () =
+        let expected = "\
+            <View Scope='RecursiveAll'>\
+                <Query>\
+                    <Where>\
+                        <Eq>\
+                            <FieldRef Name='Status'/>\
+                            <Value Type='Text'>\
+                                <![CDATA[Ready]]>\
+                            </Value>\
+                        </Eq>\
+                    </Where>\
+                    <OrderBy>\
+                        <FieldRef Name='ID' Ascending='TRUE' />\
+                    </OrderBy>\
+                </Query>\
+                <RowLimit>1000</RowLimit>\
+            </View>"
+        let actual = 
+            CamlBuilder
+                        .Where(fun f -> f.Text("Status").IsEqualTo("Ready"))
+                        .OrderBy("ID")
+                        .RowLimit(1000)
+                        .Build();
         Assert.Equal(expected, actual)
 
     [<Fact>]
