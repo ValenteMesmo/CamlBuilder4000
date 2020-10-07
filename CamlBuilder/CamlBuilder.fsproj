@@ -3,16 +3,17 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>ValenteMesmo.CamlBuilder</PackageId>
-    <Version>3.0.1</Version>
+    <Version>3.0.2</Version>
     <Authors>ValenteMesmo</Authors>
     <Description>Create caml query xmls for sharepoint with ease
+
 ```C#
 CamlBuilder.Where(f-&gt; f.Number("Age").IsGreaterThan(18)).Build()
 ```</Description>
     <PackageProjectUrl>https://github.com/ValenteMesmo/ValenteMesmo.CamlBuilder</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ValenteMesmo/ValenteMesmo.CamlBuilder</RepositoryUrl>
     <PackageTags>sharepoint caml query</PackageTags>
-    <PackageReleaseNotes>allowing orderby after where</PackageReleaseNotes>
+    <PackageReleaseNotes>order by then</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

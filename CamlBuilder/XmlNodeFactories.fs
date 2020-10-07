@@ -24,8 +24,24 @@ module internal XmlNodeFactories =
 
     let createOrderByDescNode fieldname =
         sprintf "<OrderBy>\
-                    <FieldRef Name='%s' Ascending='False' />\
+                    <FieldRef Name='%s' Ascending='FALSE' />\
                 </OrderBy>" fieldname
+
+    let createOrderByDescSingleFieldNode fieldname =
+        sprintf "<OrderBy>\
+                    <FieldRef Name='%s' Ascending='FALSE' />\
+                </OrderBy>" fieldname
+
+    let createOrderFieldRef name = 
+        sprintf "<FieldRef Name='%s' Ascending='TRUE' />" name
+
+    let createOrderFieldRefDesc name = 
+        sprintf "<FieldRef Name='%s' Ascending='FALSE' />" name
+
+    let createOrderBy content = 
+        sprintf "<OrderBy>\
+                    %s\
+                </OrderBy>" content
 
     let createAndNode a b =
         createCamlNode "And" (a + b)
