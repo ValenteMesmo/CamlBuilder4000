@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="ViewFields.fs" />
     <Compile Include="Choice.fs" />
     <Compile Include="Number.fs" />
     <Compile Include="UniqueId.fs" />

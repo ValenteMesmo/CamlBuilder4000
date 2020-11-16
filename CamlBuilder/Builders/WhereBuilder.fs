@@ -3,6 +3,7 @@
 open ValenteMesmo.CamlQueryBuilder.Internals.Xml.XmlNodeFactories
 open ValenteMesmo.CamlQueryBuilder.Internals.PartPicker
 open RowContentBuilderModule
+open System
 
 type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>) =        
     let whereContent = 
@@ -24,6 +25,15 @@ type WhereBuilder(handler : System.Func<FieldTypePicker, LogicalOperatorPicker>)
             , number
         )
         |> RowContentBuilder
+
+    member this.ViewFields ([<ParamArray>]fields : string array) =
+        (
+            whereContent.Build()
+            |> createWhereNode
+            |> createQueryNode
+            , fields
+        )
+        |> ViewFieldsBuilder
     
     member this.OrderBy fieldName =
         OrderByBuilder (whereContent.Build() |> createWhereNode, fieldName)

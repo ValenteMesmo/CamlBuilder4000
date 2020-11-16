@@ -119,3 +119,6 @@ module internal XmlNodeFactories =
 
     let createLookupIdFieldRef fieldName = 
          sprintf "<FieldRef Name='%s' LookupId='TRUE'/>" fieldName
+
+    let createViewFields fieldRefs =
+        sprintf "<ViewFields>%s</ViewFields>" fieldRefs

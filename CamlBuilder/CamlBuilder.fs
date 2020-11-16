@@ -1,7 +1,6 @@
 ﻿namespace ValenteMesmo.CamlQueryBuilder
 
 open ValenteMesmo.CamlQueryBuilder.Internals
-//viewfields
 //groupby
 
 //CAML query to check if user is member of a specific group
