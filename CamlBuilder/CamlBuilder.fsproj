@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>ValenteMesmo.CamlBuilder</PackageId>
-    <Version>3.0.3</Version>
+    <Version>3.0.4</Version>
     <Authors>ValenteMesmo</Authors>
     <Description>Create caml query xmls for sharepoint with ease
 
@@ -37,6 +37,10 @@ CamlBuilder.Where(f-&gt; f.Number("Age").IsGreaterThan(18)).Build()
     <Compile Include="Builders\ViewFieldsBuilder.fs" />
     <Compile Include="Builders\WhereBuilder.fs" />
     <Compile Include="CamlBuilder.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="FSharp.Core" Version="5.0.0" />
   </ItemGroup>
 
 </Project>
